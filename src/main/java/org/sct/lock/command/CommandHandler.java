@@ -1,16 +1,12 @@
 package org.sct.lock.command;
 
 import com.google.common.collect.Maps;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-
 import org.bukkit.entity.Player;
 import org.sct.lock.Lock;
-
 import org.sct.lock.util.SubCommand;
-
 import java.util.Map;
 
 /**
@@ -52,7 +48,7 @@ public class CommandHandler implements CommandExecutor  {
             }
             subCommand.execute(sender, args);
         }
-        return false;
+        return true;
     }
 
 }

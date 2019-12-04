@@ -6,7 +6,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
+import org.sct.lock.cache.Cache;
+
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.sct.lock.Lock.*;
 
@@ -14,9 +17,10 @@ import static org.sct.lock.Lock.*;
  * @author icestar
  * @since 2019/12/4 23:03
  */
-public class SignChange implements Listener {
-    private HashMap<Player, Location> lt_py = cache.getlt_py();
-    private HashMap<Player,Location> py_lt = cache.getpy_lt();
+public class SignChangeListener implements Listener {
+
+    private Map<Player, Location> lt_py = Cache.getPy_lt();
+    private Map<Player,Location> py_lt = cache.getPy_lt();
 
     @EventHandler
     public void onSignChange(SignChangeEvent e) {

@@ -1,17 +1,22 @@
 package org.sct.lock.command.sub;
 
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.sct.lock.enumeration.LangType;
+import org.sct.lock.file.Lang;
 import org.sct.lock.util.SubCommand;
+
+import java.util.List;
 
 public class Help implements SubCommand {
 
     @Override
     public boolean execute(CommandSender sender, String[] args) {
-        sender.sendMessage("=========Lock=========");
-        sender.sendMessage("");
-        sender.sendMessage("");
-        sender.sendMessage("");
+        List<String> helpList = Lang.getStringList(LangType.LANGUAGE_COMMANDHELP);
 
+        for (String cmd : helpList) {
+            sender.sendMessage(cmd);
+        }
 
         return true;
     }

@@ -1,19 +1,20 @@
 package org.sct.lock.cache;
 
+import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Cache {
-    private HashMap<Location, Player> lt_py = new HashMap<>();
-    private HashMap<Player, Location> py_lt = new HashMap<>();
 
+    @Getter private static Map<Location, Player> lt_py;
+    @Getter private static Map<Player, Location> py_lt;
 
-    public HashMap getlt_py() {
-        return lt_py;
+    static {
+        lt_py = new HashMap<>();
+        py_lt = new HashMap<>();
     }
 
-    public HashMap getpy_lt() {
-        return py_lt;
-    }
+
 }

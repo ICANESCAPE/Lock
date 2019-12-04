@@ -3,6 +3,7 @@ package org.sct.lock;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.sct.lock.cache.Cache;
 import org.sct.lock.command.CommandHandler;
+import org.sct.lock.file.Lang;
 import org.sct.lock.util.ListenerManager;
 
 
@@ -19,6 +20,7 @@ public final class Lock extends JavaPlugin {
         instance = this;
         ListenerManager.register();
         getServer().getConsoleSender().sendMessage("§7[§eLock§7]§2插件已被加载");
+        Lang.loadLang();
     }
 
     @Override

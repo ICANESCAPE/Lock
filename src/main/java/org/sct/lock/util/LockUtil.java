@@ -1,41 +1,15 @@
-package org.sct.lock.listener;
+package org.sct.lock.util;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.BlockFace;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
-import java.util.HashMap;
 
-import static org.sct.lock.Lock.*;
+import org.sct.lock.cache.Cache;
 
-/**
-  @author icestar
-  @since 2019/12/4 23:01
- */
-public class PlayerInteract implements Listener {
-    private HashMap<Location, Player> lt_py = cache.getlt_py();
-    private HashMap<Player,Location> py_lt = cache.getpy_lt();
+public class LockUtil {
 
-    @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent e) {
-        Material mr[] =  {};
-        if (e.hasItem()) {
-            for (Material material : mr) {
-                if (e.getItem().getType() == material) {
-                    Bukkit.getScheduler().runTaskLater(getInstance(),()->{
-                        getLocation(e);
-                    },1L);
-                }
-            }
-        }
-    }
-
-    public void getLocation(PlayerInteractEvent e) {
+    public static void getLocation(PlayerInteractEvent e) {
         Location lt = null;
         World world = e.getPlayer().getWorld();
         if (e.getClickedBlock() != null) {
@@ -57,8 +31,9 @@ public class PlayerInteract implements Listener {
             if (e.getBlockFace() == BlockFace.EAST) {
                 lt = new Location(world,X+1,Y,Z);
             }
-            lt_py.putIfAbsent(lt,e.getPlayer());
-            py_lt.putIfAbsent(e.getPlayer(),new Location(e.getPlayer().getWorld(),X,LowY,Z));
+            Cache.getLt_py().putIfAbsent(lt, e.getPlayer());
+            Cache.getPy_lt().putIfAbsent(e.getPlayer(), new Location(e.getPlayer().getWorld(),X,LowY,Z));
         }
     }
+
 }

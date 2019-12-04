@@ -3,8 +3,8 @@ package org.sct.lock.util;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.sct.lock.Lock;
-import org.sct.lock.listener.PlayerInteract;
-import org.sct.lock.listener.SignChange;
+import org.sct.lock.listener.PlayerInteractListener;
+import org.sct.lock.listener.SignChangeListener;
 
 public class ListenerManager {
 
@@ -16,7 +16,7 @@ public class ListenerManager {
      * 注册监听器
      */
     public static void register() {
-        Listener[] listeners = {new PlayerInteract(),new SignChange()};
+        Listener[] listeners = {new PlayerInteractListener(),new SignChangeListener()};
         for (Listener listener : listeners) {
             register(listener);
         }

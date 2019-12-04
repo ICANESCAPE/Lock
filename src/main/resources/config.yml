@@ -1,0 +1,28 @@
+#配置文件
+Setting:
+  #是否禁止非玩家打开收费锁(true禁止)
+  IsOtherAllowedOpen: true
+  #是否禁止非玩家破坏收费锁(true 禁止)
+  IsOtherAllowedBreak: true
+  #允许开启的世界
+  Worlds:
+    - world
+    - world_the_end
+  #是否启用纳税
+  TaxAllowed: true
+  #如果启用税收，比率是(0.05代表5%)
+  TaxPercent: 0.05
+  #是否启用VIP(填写内容视为启用，不填写视为禁用)
+  VipAllowed: "lock.vip"
+  #如果启用VIP，是否允许免税特权
+  TaxCancelable: true
+  #收费锁第一行标识(大小写不敏感)
+  LockSymbol: "lock"
+  #收费锁被安装后显示的信息
+  SymbolReplace: "&f[&a收费锁&f]"
+  #收费锁第三行进出标识
+  Enter: "进"
+  Leave: "出"
+  #第三行在木牌上显示的样子
+  LineThree: "&f[&a进&f][&c出&f]"
+

@@ -20,7 +20,7 @@ public class Reload implements SubCommand {
         Lock.getInstance().saveConfig();
 
         sender.sendMessage(Lang.getString(LangType.LANG_RELOAD));
-        return false;
+        return true;
     }
 
 }

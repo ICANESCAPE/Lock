@@ -8,8 +8,8 @@
 * ~~作者很帅，不会跑路~~
 
 ##基本信息
-* /locks help 查看帮助
-* /locks reload 重载插件
+* /lock help 查看帮助
+* /lock reload 重载插件
 * 剩下的全靠插件处理
 
 

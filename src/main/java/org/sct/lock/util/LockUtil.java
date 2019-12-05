@@ -17,8 +17,8 @@ public class LockUtil {
             double Y = e.getClickedBlock().getY();
             double Z = e.getClickedBlock().getZ();
             double LowY = e.getClickedBlock().getY()-1;
-            e.getPlayer().sendMessage("X: " + X + " LowY: " + LowY + " Z: " + Z); //输出门所在坐标
-            e.getPlayer().sendMessage(String.valueOf(new Location(e.getPlayer().getWorld(),X,LowY,Z).getBlock().getType()));//输出门所在坐标的门类型
+            //e.getPlayer().sendMessage("X: " + X + " LowY: " + LowY + " Z: " + Z); //输出门所在坐标
+            //e.getPlayer().sendMessage(String.valueOf(new Location(e.getPlayer().getWorld(),X,LowY,Z).getBlock().getType()));//输出门所在坐标的门类型
             //lt为牌子坐标
             if (e.getBlockFace() == BlockFace.NORTH) {
                 lt = new Location(world,X,Y,Z-1);
@@ -32,8 +32,8 @@ public class LockUtil {
             if (e.getBlockFace() == BlockFace.EAST) {
                 lt = new Location(world,X+1,Y,Z);
             }
-            Cache.getLt_py().put(lt, e.getPlayer());
-            Cache.getPy_lt().put(e.getPlayer(), new Location(e.getPlayer().getWorld(),X,LowY,Z));
+            Cache.getLocationPlayer().put(lt, e.getPlayer());
+            Cache.getPlayerLocation().put(e.getPlayer(), new Location(e.getPlayer().getWorld(),X,LowY,Z));
         }
     }
 

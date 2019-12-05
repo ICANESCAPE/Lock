@@ -19,4 +19,12 @@ public class BasicUtil {
         return msgList;
     }
 
+    public static List<String> convertMaterial(List<String> name) {
+        List<String> materialList = new ArrayList<>();
+        for (String materialName : name) {
+            materialList.add(materialName.replace("_SIGN","_WALL_SIGN"));
+        }
+        return materialList;
+    }
+
 }

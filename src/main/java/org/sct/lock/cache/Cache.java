@@ -6,14 +6,21 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author icestar
+ */
 public class Cache {
 
-    @Getter private static Map<Location, Player> lt_py;
-    @Getter private static Map<Player, Location> py_lt;
+    @Getter private static Map<Location, Player> LocationPlayer;
+    @Getter private static Map<Player, Location> PlayerLocation;
+    @Getter private static Map<Player, Location> DoorLocation;
+    @Getter private static Map<Player, Boolean> PlayerisSneak;
 
     static {
-        lt_py = new HashMap<>();
-        py_lt = new HashMap<>();
+        LocationPlayer = new HashMap<>();
+        PlayerLocation = new HashMap<>();
+        DoorLocation = new HashMap<>();
+        PlayerisSneak = new HashMap<>();
     }
 
 

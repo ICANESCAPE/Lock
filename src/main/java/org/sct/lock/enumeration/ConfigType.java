@@ -13,9 +13,13 @@ public enum ConfigType {
     SETTING_TAXCANCELABLE("Setting.TaxCancelable"),
     SETTING_LOCKSYMBOL("Setting.LockSymbol"),
     SETTING_SYMBOLREPLACE("Setting.SymbolReplace"),
-    SETTING_ENTER("Setting.Enter"),
-    SETTING_LEAVE("Setting.Leave"),
-    SETTING_LINETHREE("Setting.LineThree");
+    SETTING_FLAGENTER("Setting.FlagEnter"),
+    SETTING_FLAGLEAVE("Setting.FLagLeave"),
+    SETTING_ENTERREPLACE("Setting.EnterReplace"),
+    SETTING_LEAVEREPLACE("Setting.LeaveReplace"),
+    SETTING_DOORTYPE("Setting.DoorType"),
+    SETTING_SIGNTYPE("Setting.SignType"),
+    SETTING_CHARGE("Setting.Charge");
 
 
     @Getter String path;

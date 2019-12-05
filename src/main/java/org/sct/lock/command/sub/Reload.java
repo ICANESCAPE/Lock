@@ -16,6 +16,7 @@ public class Reload implements SubCommand {
         }
 
         Lang.loadLang();
+        Lock.getInstance().saveDefaultConfig();
         Lock.getInstance().saveConfig();
 
         sender.sendMessage(Lang.getString(LangType.LANG_RELOAD));

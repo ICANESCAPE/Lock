@@ -10,9 +10,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.sct.lock.cache.Cache;
+import org.sct.lock.enumeration.ConfigType;
+import org.sct.lock.file.Config;
 import org.sct.lock.util.LockUtil;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.sct.lock.Lock.*;
@@ -28,10 +31,12 @@ public class PlayerInteractListener implements Listener {
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent e) {
-        Material mr[] =  {};
-        if (e.hasItem()) {
-            for (Material material : mr) {
+        List<String> doorList = Config.getStringList(ConfigType.SETTING_SIGNTYPE);
+        if (e.hasItem()) {//如果玩家手持物品
+            for (String materialString : doorList) {
+                Material material = Material.getMaterial(materialString);
                 if (e.getItem().getType() == material) {
+                    //System.out.println("牌子类型: " + material);//输出符合的牌子类型
                     Bukkit.getScheduler().runTaskLater(getInstance(),()->{
                         LockUtil.getLocation(e);
                     },1L);

@@ -1,5 +1,6 @@
 package org.sct.lock;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.sct.lock.cache.Cache;
 import org.sct.lock.command.CommandHandler;
@@ -19,8 +20,10 @@ public final class Lock extends JavaPlugin {
     public void onEnable() {
         instance = this;
         ListenerManager.register();
-        getServer().getConsoleSender().sendMessage("§7[§eLock§7]§2插件已被加载");
         Lang.loadLang();
+        saveDefaultConfig();
+        Bukkit.getPluginCommand("lock").setExecutor(new CommandHandler());
+        getServer().getConsoleSender().sendMessage("§7[§eLock§7]§2插件已被加载");
     }
 
     @Override

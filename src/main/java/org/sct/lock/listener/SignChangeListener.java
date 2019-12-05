@@ -7,9 +7,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
 import org.sct.lock.cache.Cache;
+import org.sct.lock.enumeration.ConfigType;
+import org.sct.lock.file.Config;
+import org.sct.lock.util.BasicUtil;
 
 import java.util.HashMap;
-import java.util.Map;
+
 
 import static org.sct.lock.Lock.*;
 
@@ -19,38 +22,35 @@ import static org.sct.lock.Lock.*;
  */
 public class SignChangeListener implements Listener {
 
-    private Map<Player, Location> lt_py = Cache.getPy_lt();
-    private Map<Player,Location> py_lt = cache.getPy_lt();
-
     @EventHandler
     public void onSignChange(SignChangeEvent e) {
         HashMap<Player,Boolean> py_bool = new HashMap<>();
         py_bool.put(e.getPlayer(),true);
         Location lt = e.getBlock().getLocation();
-        e.getPlayer().sendMessage(String.valueOf(py_lt.get(e.getPlayer()).getBlock().getType()));
-        for (String doors : getInstance().getConfig().getStringList("doors")) {
-            //e.getPlayer().sendMessage("允许的门类型: " + doors);
-            //e.getPlayer().sendMessage("对应门的坐标: " + py_lt.get(e.getPlayer()));
-            if (py_lt.get(e.getPlayer()).getBlock().getType() == Material.getMaterial(doors)) py_bool.put(e.getPlayer(),false);
+        //e.getPlayer().sendMessage("改变的牌子的位置: " + lt);
+        for (String doors : Config.getStringList(ConfigType.SETTING_DOORTYPE)) {
+            if (Cache.getPy_lt().get(e.getPlayer()).getBlock().getType() == Material.getMaterial(doors)) py_bool.put(e.getPlayer(),false);
         }
         if (py_bool.get(e.getPlayer())) return;
-        if (e.getPlayer() == lt_py.get(lt)) {
-            if (e.getLine(0).equalsIgnoreCase(getInstance().getConfig().getString("lock")) && e.getLine(1) != null) {
-                e.setLine(0,"§c[自动收费门]");
-                e.setLine(3,e.getPlayer().getName());
+        //e.getPlayer().sendMessage("门类型匹配");//门类型匹配，替换信息
+        if (e.getPlayer() == Cache.getLt_py().get(lt)) {
+            if (e.getLine(0).equalsIgnoreCase(Config.getString(ConfigType.SETTING_LOCKSYMBOL)) && e.getLine(1) != null) {
+                //e.getPlayer().sendMessage("门Symbol信息匹配");//门Symbol信息匹配,价格存在，替换信息
+                e.setLine(0, BasicUtil.convert(Config.getString(ConfigType.SETTING_SYMBOLREPLACE)));//替换第一行Symbol
+                e.setLine(3,"§l" + e.getPlayer().getName());//替换第四行为玩家名
                 if (Integer.getInteger(e.getLine(1)) != null) {
                     int money = Integer.getInteger(e.getLine(2));
                 }
-                e.setLine(1,"§b§l花费: §e§l" + e.getLine(1));
-                if (e.getLine(2).equalsIgnoreCase(getInstance().getConfig().getString("flagEnter"))) {
-                    e.setLine(2,"§a[进]");
-                } else if (e.getLine(2).equalsIgnoreCase(getInstance().getConfig().getString("flagLeave"))) {
-                    e.setLine(2,"§a[出]");
-                } else e.setLine(2,"§a[进][出]");
+                e.setLine(1,BasicUtil.convert(Config.getString(ConfigType.SETTING_CHARGE) + e.getLine(1)));//替换第二行价格
+                if (e.getLine(2).equalsIgnoreCase(Config.getString(ConfigType.SETTING_FLAGENTER))) {
+                    e.setLine(2,BasicUtil.convert(Config.getString(ConfigType.SETTING_ENTERREPLACE)));//替换第三行进
+                } else if (e.getLine(2).equalsIgnoreCase(Config.getString(ConfigType.SETTING_FLAGENTER))) {
+                    e.setLine(2,BasicUtil.convert(Config.getString(ConfigType.SETTING_LEAVEREPLACE)));//替换第三行出
+                } else e.setLine(2,BasicUtil.convert(Config.getString(ConfigType.SETTING_ENTERREPLACE) + Config.getString(ConfigType.SETTING_LEAVEREPLACE)));//替换第三行进出
 
             }
-            lt_py.remove(lt);
-            py_lt.remove(e.getPlayer());
+            Cache.getLt_py().remove(lt);
+            Cache.getPy_lt().remove(e.getPlayer());
             py_bool.remove(e.getPlayer());
         }
     }

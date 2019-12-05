@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.sct.lock.Lock;
 import org.sct.lock.listener.PlayerInteractListener;
+import org.sct.lock.listener.PlayerToggleSneakListener;
 import org.sct.lock.listener.SignChangeListener;
 
 public class ListenerManager {
@@ -16,7 +17,7 @@ public class ListenerManager {
      * 注册监听器
      */
     public static void register() {
-        Listener[] listeners = {new PlayerInteractListener(),new SignChangeListener()};
+        Listener[] listeners = {new PlayerInteractListener(),new SignChangeListener(),new PlayerToggleSneakListener()};
         for (Listener listener : listeners) {
             register(listener);
         }

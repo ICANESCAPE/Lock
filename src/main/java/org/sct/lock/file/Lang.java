@@ -1,11 +1,9 @@
 package org.sct.lock.file;
 
 import org.bukkit.configuration.file.YamlConfiguration;
-
 import org.sct.lock.Lock;
 import org.sct.lock.enumeration.LangType;
 import org.sct.lock.util.BasicUtil;
-
 import java.io.File;
 import java.util.List;
 

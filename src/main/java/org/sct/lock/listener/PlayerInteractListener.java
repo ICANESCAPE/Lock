@@ -15,6 +15,7 @@ import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.file.Config;
 import org.sct.lock.util.CheckUtil;
 import org.sct.lock.util.LockUtil;
+import org.sct.lock.util.TeleportUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -48,13 +49,17 @@ public class PlayerInteractListener implements Listener {
             }
 
             for (String door : doorList) {
-                //如果右键的门符合类型
+                //如果玩家正在潜行
                 if (Cache.getPlayerisSneak().get(e.getPlayer()) == null || !Cache.getPlayerisSneak().get(e.getPlayer())) {
                     return;
                 }
+                //如果右键的门符合类型
                 if (e.getClickedBlock().getType() == Material.getMaterial(door)) {
-                    Cache.getDoorLocation().put(e.getPlayer(),e.getClickedBlock().getLocation());
-                    CheckUtil.CheckSign(e.getPlayer(),e.getClickedBlock());
+                    //如果门的上方有自动收费门的牌子,在CheckUtil内存入牌子和方块的位置
+                    if (CheckUtil.CheckSign(e.getPlayer(),e.getClickedBlock())) {
+                        //传送
+                        TeleportUtil.EnterTp(e.getPlayer());
+                    }
                 }
             }
 

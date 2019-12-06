@@ -31,7 +31,7 @@ public class SignChangeListener implements Listener {
         if (py_bool.get(e.getPlayer())) return;
         //e.getPlayer().sendMessage("门类型匹配");//门类型匹配，替换信息
         if (e.getPlayer() == Cache.getLocationPlayer().get(lt)) {
-            if (e.getLine(0).equalsIgnoreCase(Config.getString(ConfigType.SETTING_LOCKSYMBOL)) && e.getLine(1) != null) {
+            if (e.getLine(0).equalsIgnoreCase(Config.getString(ConfigType.SETTING_LOCKSYMBOL)) && !e.getLine(1).equalsIgnoreCase("")) {
                 //e.getPlayer().sendMessage("门Symbol信息匹配");//门Symbol信息匹配,价格存在，替换信息
                 //替换第一行Symbol
                 e.setLine(0, BasicUtil.convert(Config.getString(ConfigType.SETTING_SYMBOLREPLACE)));

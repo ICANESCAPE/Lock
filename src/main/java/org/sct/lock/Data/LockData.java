@@ -1,4 +1,4 @@
-package org.sct.lock.cache;
+package org.sct.lock.Data;
 
 import lombok.Getter;
 import org.bukkit.Location;
@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author icestar
  */
-public class Cache {
+public class LockData {
 
     static {
         LocationPlayer = new HashMap<>();

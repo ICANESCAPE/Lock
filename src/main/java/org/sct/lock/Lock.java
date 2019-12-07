@@ -2,7 +2,7 @@ package org.sct.lock;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.sct.lock.cache.Cache;
+import org.sct.lock.Data.LockData;
 import org.sct.lock.command.CommandHandler;
 import org.sct.lock.file.Lang;
 import org.sct.lock.util.EcoUtil;
@@ -14,7 +14,8 @@ import org.sct.lock.util.ListenerManager;
  * @since 2019/12/2 17:15:17
  */
 public final class Lock extends JavaPlugin {
-    public static Cache cache = new Cache();
+
+    public static LockData lockData = new LockData();
     private static Lock instance;
 
     @Override

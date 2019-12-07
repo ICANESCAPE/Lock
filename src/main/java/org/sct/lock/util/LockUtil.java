@@ -5,7 +5,7 @@ import org.bukkit.World;
 import org.bukkit.block.BlockFace;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import org.sct.lock.cache.Cache;
+import org.sct.lock.Data.LockData;
 
 public class LockUtil {
 
@@ -32,8 +32,8 @@ public class LockUtil {
             if (e.getBlockFace() == BlockFace.EAST) {
                 lt = new Location(world,X+1,Y,Z);
             }
-            Cache.getLocationPlayer().put(lt, e.getPlayer());
-            Cache.getPlayerLocation().put(e.getPlayer(), new Location(e.getPlayer().getWorld(),X,LowY,Z));
+            LockData.getLocationPlayer().put(lt, e.getPlayer());
+            LockData.getPlayerLocation().put(e.getPlayer(), new Location(e.getPlayer().getWorld(),X,LowY,Z));
         }
     }
 

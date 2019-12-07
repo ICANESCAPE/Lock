@@ -3,7 +3,7 @@ package org.sct.lock.listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
-import org.sct.lock.cache.Cache;
+import org.sct.lock.Data.LockData;
 
 public class PlayerToggleSneakListener implements Listener {
 
@@ -11,9 +11,9 @@ public class PlayerToggleSneakListener implements Listener {
     public void onPlayerToggleSneak(PlayerToggleSneakEvent e) {
         //如果玩家正在前行
         if (e.isSneaking()) {
-            Cache.getPlayerisSneak().put(e.getPlayer(),true);
+            LockData.getPlayerisSneak().put(e.getPlayer(),true);
         } else {
-            Cache.getPlayerisSneak().remove(e.getPlayer());
+            LockData.getPlayerisSneak().remove(e.getPlayer());
         }
     }
 }

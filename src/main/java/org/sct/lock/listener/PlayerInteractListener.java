@@ -1,25 +1,19 @@
 package org.sct.lock.listener;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.block.BlockFace;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.sct.lock.cache.Cache;
+import org.sct.lock.Data.LockData;
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.file.Config;
 import org.sct.lock.util.CheckUtil;
 import org.sct.lock.util.LockUtil;
 import org.sct.lock.util.TeleportUtil;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.sct.lock.Lock.*;
 
@@ -50,7 +44,7 @@ public class PlayerInteractListener implements Listener {
 
             for (String door : doorList) {
                 //如果玩家正在潜行
-                if (Cache.getPlayerisSneak().get(e.getPlayer()) == null || !Cache.getPlayerisSneak().get(e.getPlayer())) {
+                if (LockData.getPlayerisSneak().get(e.getPlayer()) == null || !LockData.getPlayerisSneak().get(e.getPlayer())) {
                     return;
                 }
                 //如果右键的门符合类型

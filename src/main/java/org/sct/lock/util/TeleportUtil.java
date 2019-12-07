@@ -3,13 +3,13 @@ package org.sct.lock.util;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.sct.lock.cache.Cache;
+import org.sct.lock.Data.LockData;
 
 
 public class TeleportUtil {
     public static void EnterTp(Player player) {
-        Block sign = Cache.getPlayerSign().get(player);
-        Block block = Cache.getPlayerBlock().get(player);
+        Block sign = LockData.getPlayerSign().get(player);
+        Block block = LockData.getPlayerBlock().get(player);
         String blockFace = sign.getBlockData().getAsString().split(",")[0].split("=")[1];
         //判断是出门还是进门
         double PlayerX = player.getLocation().getBlockX();

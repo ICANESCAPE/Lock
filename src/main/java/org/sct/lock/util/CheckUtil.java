@@ -5,7 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
-import org.sct.lock.cache.Cache;
+import org.sct.lock.Data.LockData;
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.file.Config;
 
@@ -28,7 +28,7 @@ public class CheckUtil {
         Found = findSign(player,Found,X,Y+2,Z-1);
         if (Found) {
             //玩家交互的门上方的方块(忽视高度)
-            Cache.getPlayerBlock().put(player,block);
+            LockData.getPlayerBlock().put(player,block);
         }
         return Found;
     }
@@ -42,7 +42,7 @@ public class CheckUtil {
             if (new Location(player.getWorld(),X,Y,Z).getBlock().getType() == signMaterial) {
 
                 //存入玩家交互的门上方的牌子
-                Cache.getPlayerSign().put(player,new Location(player.getWorld(),X,Y,Z).getBlock());
+                LockData.getPlayerSign().put(player,new Location(player.getWorld(),X,Y,Z).getBlock());
 
                 return true;
             }

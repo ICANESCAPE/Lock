@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
-import org.sct.lock.cache.Cache;
+import org.sct.lock.Data.LockData;
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.file.Config;
 import org.sct.lock.util.BasicUtil;
@@ -27,11 +27,11 @@ public class SignChangeListener implements Listener {
         Location lt = e.getBlock().getLocation();
         //e.getPlayer().sendMessage("改变的牌子的位置: " + lt);
         for (String doors : Config.getStringList(ConfigType.SETTING_DOORTYPE)) {
-            if (Cache.getPlayerLocation().get(e.getPlayer()).getBlock().getType() == Material.getMaterial(doors)) py_bool.put(e.getPlayer(),false);
+            if (LockData.getPlayerLocation().get(e.getPlayer()).getBlock().getType() == Material.getMaterial(doors)) py_bool.put(e.getPlayer(),false);
         }
         if (py_bool.get(e.getPlayer())) return;
         //e.getPlayer().sendMessage("门类型匹配");//门类型匹配，替换信息
-        if (e.getPlayer() == Cache.getLocationPlayer().get(lt)) {
+        if (e.getPlayer() == LockData.getLocationPlayer().get(lt)) {
             if (e.getLine(0).equalsIgnoreCase(Config.getString(ConfigType.SETTING_LOCKSYMBOL)) && !e.getLine(1).equalsIgnoreCase("")) {
                 //e.getPlayer().sendMessage("门Symbol信息匹配");//门Symbol信息匹配,价格存在，替换信息
                 //替换第一行Symbol
@@ -54,8 +54,8 @@ public class SignChangeListener implements Listener {
                     e.setLine(2,BasicUtil.convert(Config.getString(ConfigType.SETTING_ENTERREPLACE) + Config.getString(ConfigType.SETTING_LEAVEREPLACE)));
                 }
             }
-            Cache.getLocationPlayer().remove(lt);
-            Cache.getPlayerLocation().remove(e.getPlayer());
+            LockData.getLocationPlayer().remove(lt);
+            LockData.getPlayerLocation().remove(e.getPlayer());
             py_bool.remove(e.getPlayer());
         }
     }

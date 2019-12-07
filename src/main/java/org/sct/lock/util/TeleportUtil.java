@@ -3,7 +3,7 @@ package org.sct.lock.util;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.sct.lock.Data.LockData;
+import org.sct.lock.data.LockData;
 
 
 public class TeleportUtil {

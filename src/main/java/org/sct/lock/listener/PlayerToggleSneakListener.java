@@ -3,7 +3,7 @@ package org.sct.lock.listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
-import org.sct.lock.Data.LockData;
+import org.sct.lock.data.LockData;
 
 public class PlayerToggleSneakListener implements Listener {
 

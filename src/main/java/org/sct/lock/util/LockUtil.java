@@ -5,7 +5,7 @@ import org.bukkit.World;
 import org.bukkit.block.BlockFace;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import org.sct.lock.Data.LockData;
+import org.sct.lock.data.LockData;
 
 public class LockUtil {
 

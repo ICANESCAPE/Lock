@@ -1,4 +1,4 @@
-package org.sct.lock.Data;
+package org.sct.lock.data;
 
 import lombok.Getter;
 import org.bukkit.Location;

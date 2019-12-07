@@ -3,7 +3,7 @@ package org.sct.lock;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.sct.lock.Data.LockData;
+import org.sct.lock.data.LockData;
 import org.sct.lock.command.CommandHandler;
 import org.sct.lock.file.Lang;
 import org.sct.lock.util.EcoUtil;

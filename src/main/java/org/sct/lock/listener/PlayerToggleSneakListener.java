@@ -6,6 +6,7 @@ import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.sct.lock.cache.Cache;
 
 public class PlayerToggleSneakListener implements Listener {
+
     @EventHandler
     public void onPlayerToggleSneak(PlayerToggleSneakEvent e) {
         //如果玩家正在前行

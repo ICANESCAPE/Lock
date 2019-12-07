@@ -1,6 +1,7 @@
 package org.sct.lock.command.sub;
 
 import org.bukkit.command.CommandSender;
+
 import org.sct.lock.enumeration.LangType;
 import org.sct.lock.file.Lang;
 import org.sct.lock.util.SubCommand;
@@ -16,7 +17,7 @@ public class Help implements SubCommand {
         for (String cmd : helpList) {
             sender.sendMessage(cmd);
         }
-
         return true;
     }
+
 }

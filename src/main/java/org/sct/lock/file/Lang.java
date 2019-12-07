@@ -14,7 +14,7 @@ public class Lang {
 
     public static void loadLang() {
         file = new File(Lock.getInstance().getDataFolder() + "\\lang.yml");
-        if (!file.exists()) Lock.getInstance().saveResource("lang.yml",false);
+        if (!file.exists()) { Lock.getInstance().saveResource("lang.yml",false); }
         config = YamlConfiguration.loadConfiguration(file);
     }
 

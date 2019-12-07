@@ -10,6 +10,7 @@ import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.file.Config;
 
 public class CheckUtil {
+
     public static boolean CheckSign(Player player,Block block) {
         BlockFace playerFacing = player.getFacing();
         Location BlockLocation = block.getLocation();

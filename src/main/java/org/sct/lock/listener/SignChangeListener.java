@@ -11,6 +11,7 @@ import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.file.Config;
 import org.sct.lock.util.BasicUtil;
 import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -21,7 +22,7 @@ public class SignChangeListener implements Listener {
 
     @EventHandler
     public void onSignChange(SignChangeEvent e) {
-        HashMap<Player,Boolean> py_bool = new HashMap<>();
+        Map<Player,Boolean> py_bool = new HashMap<>();
         py_bool.put(e.getPlayer(),true);
         Location lt = e.getBlock().getLocation();
         //e.getPlayer().sendMessage("改变的牌子的位置: " + lt);
@@ -52,7 +53,6 @@ public class SignChangeListener implements Listener {
                     //替换第三行进出
                     e.setLine(2,BasicUtil.convert(Config.getString(ConfigType.SETTING_ENTERREPLACE) + Config.getString(ConfigType.SETTING_LEAVEREPLACE)));
                 }
-
             }
             Cache.getLocationPlayer().remove(lt);
             Cache.getPlayerLocation().remove(e.getPlayer());

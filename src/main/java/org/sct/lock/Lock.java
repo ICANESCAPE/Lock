@@ -1,5 +1,6 @@
 package org.sct.lock;
 
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.sct.lock.Data.LockData;
@@ -15,12 +16,13 @@ import org.sct.lock.util.ListenerManager;
  */
 public final class Lock extends JavaPlugin {
 
-    public static LockData lockData = new LockData();
+    @Getter private static LockData lockData;
     private static Lock instance;
 
     @Override
     public void onEnable() {
         instance = this;
+        lockData = new LockData();
         ListenerManager.register();
         Lang.loadLang();
         EcoUtil.loadVault();

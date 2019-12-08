@@ -12,6 +12,7 @@ import org.bukkit.util.StringUtil;
 import org.sct.lock.Lock;
 import org.sct.lock.command.sub.Help;
 import org.sct.lock.command.sub.Reload;
+import org.sct.lock.command.sub.Update;
 import org.sct.lock.enumeration.LangType;
 import org.sct.lock.file.Lang;
 import org.sct.lock.util.SubCommand;
@@ -32,6 +33,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
     public CommandHandler() {
         subCommandMap.put("reload",new Reload());
         subCommandMap.put("help",new Help());
+        subCommandMap.put("update",new Update());
     }
 
     public void registerSubCommand(String commandName, SubCommand command) {
@@ -69,6 +71,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
             if (args.length == 1) {
                 completions.add("reload");
                 completions.add("help");
+                completions.add("update");
                 return StringUtil.copyPartialMatches(args[0], completions, new ArrayList<>());
             }
         }

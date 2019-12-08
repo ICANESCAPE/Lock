@@ -19,7 +19,9 @@ public final class EcoUtil {
      */
     public static void loadVault() throws NullPointerException {
         RegisteredServiceProvider<Economy> registeredServiceProvider = Bukkit.getServicesManager().getRegistration(Economy.class);
-        if (registeredServiceProvider == null) throw new NullPointerException();
+        if (registeredServiceProvider == null) {
+            throw new NullPointerException();
+        }
         economy = registeredServiceProvider.getProvider();
     }
 

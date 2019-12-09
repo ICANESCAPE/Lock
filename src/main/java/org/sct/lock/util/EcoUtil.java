@@ -1,7 +1,5 @@
 package org.sct.lock.util;
 
-import java.util.UUID;
-
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -9,6 +7,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 import net.milkbowl.vault.economy.Economy;
 
 public final class EcoUtil {
+
 
     private static Economy economy = null;
 
@@ -65,5 +64,4 @@ public final class EcoUtil {
     public static void take(OfflinePlayer player, double money) {
         economy.withdrawPlayer(player, money);
     }
-
 }

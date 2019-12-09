@@ -9,6 +9,7 @@ import org.sct.lock.util.SubCommand;
 import java.io.IOException;
 
 public class Update implements SubCommand {
+
     @Override
     public boolean execute(CommandSender sender, String[] args) {
         Runnable runnable = () ->{
@@ -21,8 +22,6 @@ public class Update implements SubCommand {
         };
         new Thread(runnable).run();
         sender.sendMessage("§7[§eLock§7]§2下载成功");
-
-
 
         return true;
     }

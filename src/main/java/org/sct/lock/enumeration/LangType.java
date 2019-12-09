@@ -10,7 +10,8 @@ public enum LangType {
     LANGUAGE_COMMANDHELP("Language.CommandHelp"),
     LANG_NOPERMISSION("Language.NoPermission"),
     LANG_RELOAD("Language.Reload"),
-    LANG_CREATE("Language.Create");
+    LANG_CREATE("Language.Create"),
+    LANG_COMMANDERROR("Language.CommandError");
 
     @Getter String path;
 

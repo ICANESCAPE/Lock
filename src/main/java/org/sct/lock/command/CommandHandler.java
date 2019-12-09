@@ -56,7 +56,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
 
             SubCommand subCommand = subCommandMap.get(args[0]);
             if (subCommand == null) {//如果参数不正确
-                sender.sendMessage(Lang.getString(LangType.LANG_NOPERMISSION));
+                sender.sendMessage(Lang.getString(LangType.LANG_COMMANDERROR));
                 return true;
             }
             subCommand.execute(sender, args);

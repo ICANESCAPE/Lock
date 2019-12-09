@@ -5,6 +5,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 import net.milkbowl.vault.economy.Economy;
+import org.sct.lock.Lock;
 
 public final class EcoUtil {
 
@@ -17,9 +18,12 @@ public final class EcoUtil {
      * @throws NullPointerException NullPointerException
      */
     public static void loadVault() throws NullPointerException {
+        if (!Bukkit.getPluginManager().isPluginEnabled("Vault")) {
+            return;
+        }
         RegisteredServiceProvider<Economy> registeredServiceProvider = Bukkit.getServicesManager().getRegistration(Economy.class);
         if (registeredServiceProvider == null) {
-            throw new NullPointerException();
+            return;
         }
         economy = registeredServiceProvider.getProvider();
     }

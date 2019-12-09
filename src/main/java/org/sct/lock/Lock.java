@@ -8,6 +8,7 @@ import org.sct.lock.command.CommandHandler;
 import org.sct.lock.file.Lang;
 import org.sct.lock.util.EcoUtil;
 import org.sct.lock.util.ListenerManager;
+import org.sct.lock.util.Update;
 
 
 /**
@@ -26,6 +27,7 @@ public final class Lock extends JavaPlugin {
         ListenerManager.register();
         Lang.loadLang();
         EcoUtil.loadVault();
+        new Thread(new Update()).start();
         saveDefaultConfig();
         Bukkit.getPluginCommand("lock").setExecutor(new CommandHandler());
         getServer().getConsoleSender().sendMessage("§7[§eLock§7]§2插件已被加载");

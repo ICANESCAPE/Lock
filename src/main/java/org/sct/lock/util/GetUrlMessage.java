@@ -9,6 +9,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GetUrlMessage {
     public static void get(CommandSender sender) throws IOException {
@@ -19,17 +21,27 @@ public class GetUrlMessage {
         BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         String read;
         int line = 0;
+        List<String> version = new ArrayList<>();
         while ((read = reader.readLine()) != null) {
             line++;
             if (line == 9) {
-                sender.sendMessage(unicodeToUtf8(read));
+                version = getMsg(read);
             }
         }
-
+        sender.sendMessage("§e===============================================");
+        for (String versionMsg : version) {
+            sender.sendMessage(versionMsg);
+        }
+        sender.sendMessage("§e===============================================");
     }
 
-    private static String unicodeToUtf8 (String string) throws UnsupportedEncodingException {
-        byte[] bytes = string.getBytes("GBK");
-        return new String(bytes, StandardCharsets.UTF_8);
+    private static List<String> getMsg (String urlString) throws UnsupportedEncodingException {
+        byte[] bytes = urlString.getBytes("GBK");
+        List<String> msgList = new ArrayList<>();
+        String message = new String(bytes, StandardCharsets.UTF_8);
+        for (String string : message.split(";")) {
+            msgList.add(string);
+        }
+        return BasicUtil.convert(msgList);
     }
 }

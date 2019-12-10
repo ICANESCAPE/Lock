@@ -30,7 +30,16 @@ public final class Lock extends JavaPlugin {
         new Thread(new Update()).start();
         saveDefaultConfig();
         Bukkit.getPluginCommand("lock").setExecutor(new CommandHandler());
-        getServer().getConsoleSender().sendMessage("§7[§eLock§7]§2插件已被加载");
+        getServer().getConsoleSender().sendMessage("      ___       ___           ___           ___     ");
+        getServer().getConsoleSender().sendMessage("     /\\__\\     /\\  \\         /\\  \\         /\\__\\");
+        getServer().getConsoleSender().sendMessage("    /:/  /    /::\\  \\       /::\\  \\       /:/  /");
+        getServer().getConsoleSender().sendMessage("   /:/  /    /:/\\:\\  \\     /:/\\:\\  \\     /:/__/");
+        getServer().getConsoleSender().sendMessage("  /:/  /    /:/  \\:\\  \\   /:/  \\:\\  \\   /::\\__\\____");
+        getServer().getConsoleSender().sendMessage(" /:/__/    /:/__/ \\:\\__\\ /:/__/ \\:\\__\\ /:/\\:::::\\__\\");
+        getServer().getConsoleSender().sendMessage(" \\:\\  \\    \\:\\  \\ /:/  / \\:\\  \\  \\/__/ \\/_|:|~~|~");
+        getServer().getConsoleSender().sendMessage("  \\:\\  \\    \\:\\  /:/  /   \\:\\  \\          |:|  |");
+        getServer().getConsoleSender().sendMessage("    \\:\\__\\    \\::/  /       \\:\\__\\        |:|  |");
+        getServer().getConsoleSender().sendMessage("     \\/__/     \\/__/         \\/__/         \\|__|");
     }
 
     @Override

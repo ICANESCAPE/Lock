@@ -23,7 +23,7 @@ public final class EcoUtil {
         }
         RegisteredServiceProvider<Economy> registeredServiceProvider = Bukkit.getServicesManager().getRegistration(Economy.class);
         if (registeredServiceProvider == null) {
-            return;
+            throw new NullPointerException();
         }
         economy = registeredServiceProvider.getProvider();
     }

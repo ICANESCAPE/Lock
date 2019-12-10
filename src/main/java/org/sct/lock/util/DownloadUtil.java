@@ -6,7 +6,7 @@ import java.net.URL;
 
 public class DownloadUtil {
 
-    public static void Download(String urlString, String fileName, String savePath) throws IOException {
+    public static void download(String urlString, String fileName, String savePath) throws IOException {
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         /*设置超时时间为3秒*/

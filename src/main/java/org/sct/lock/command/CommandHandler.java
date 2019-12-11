@@ -74,6 +74,14 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
                 completions.add("update");
                 return StringUtil.copyPartialMatches(args[0], completions, new ArrayList<>());
             }
+            if (args.length == 2) {
+                if (args[0].equalsIgnoreCase("update")) {
+                    completions.add("version");
+                    completions.add("download");
+                    return StringUtil.copyPartialMatches(args[1], completions, new ArrayList<>());
+                }
+            }
+
         }
         return completions;
     }

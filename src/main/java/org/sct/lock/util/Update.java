@@ -7,10 +7,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-public class Update implements Runnable{
+/**
+ * @author icestar
+ */
+public class Update {
 
-    @Override
-    public void run() {
+    public static void checkupdate() {
         try {
             URL url = new URL("https://api.github.com/repos/ICANESCAPE/Lock/releases");
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));

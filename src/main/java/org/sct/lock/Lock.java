@@ -8,7 +8,7 @@ import org.sct.lock.command.CommandHandler;
 import org.sct.lock.file.Lang;
 import org.sct.lock.util.EcoUtil;
 import org.sct.lock.util.ListenerManager;
-import org.sct.lock.util.Update;
+import org.sct.lock.util.UpdateUtil;
 
 
 /**
@@ -27,7 +27,7 @@ public final class Lock extends JavaPlugin {
         ListenerManager.register();
         Lang.loadLang();
         EcoUtil.loadVault();
-        LockData.getPool().submit(Update::checkupdate);
+        LockData.getPool().submit(UpdateUtil::checkupdate);
         saveDefaultConfig();
         Bukkit.getPluginCommand("lock").setExecutor(new CommandHandler());
         getServer().getConsoleSender().sendMessage("      ___       ___           ___           ___     ");

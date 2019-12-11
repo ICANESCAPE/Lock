@@ -10,7 +10,7 @@ import java.net.URL;
 /**
  * @author icestar
  */
-public class Update {
+public class UpdateUtil {
 
     public static void checkupdate() {
         try {

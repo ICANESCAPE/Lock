@@ -27,7 +27,7 @@ public final class Lock extends JavaPlugin {
         ListenerManager.register();
         Lang.loadLang();
         EcoUtil.loadVault();
-        new Thread(new Update()).start();
+        LockData.getPool().submit(Update::checkupdate);
         saveDefaultConfig();
         Bukkit.getPluginCommand("lock").setExecutor(new CommandHandler());
         getServer().getConsoleSender().sendMessage("      ___       ___           ___           ___     ");

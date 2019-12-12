@@ -14,11 +14,11 @@ public class DownloadUtil {
         /*设置超时时间为3秒*/
         conn.setConnectTimeout(3 * 1000);
         /*建立连接*/
-        sender.sendMessage("&7[&eLock&7]&2与下载源建立连接中.....");
+        sender.sendMessage("§7[§eLock§7]§2与下载源建立连接中.....");
         /*得到输入流*/
         InputStream inputStream = conn.getInputStream();
         /*获取字节数组*/
-        sender.sendMessage("&7[&eLock&7]&2获取文件字节流中.....");
+        sender.sendMessage("§7[§eLock§7]§2获取文件字节流中.....");
         byte[] getData = readInputStream(inputStream);
 
         File saveDir = new File(savePath);
@@ -27,7 +27,7 @@ public class DownloadUtil {
         }
         File file = new File(saveDir + File.separator + fileName);
         FileOutputStream fos = new FileOutputStream(file);
-        sender.sendMessage("&7[&eLock&7]&2文件输出输出中.....");
+        sender.sendMessage("§7[§eLock§7]§2文件输出输出中.....");
         fos.write(getData);
         if (fos != null) {
             fos.close();
@@ -35,7 +35,7 @@ public class DownloadUtil {
         if (inputStream != null) {
             inputStream.close();
         }
-        sender.sendMessage("&7[&eLock&7]&2文件下载成功，已保存在" + savePath.toString() + fileName);
+        sender.sendMessage("§7[§eLock§7]§2文件下载成功，已保存在" + savePath.toString() + File.separator + fileName);
     }
 
     private static byte[] readInputStream(InputStream inputStream) throws IOException {

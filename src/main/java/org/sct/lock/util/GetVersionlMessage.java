@@ -20,7 +20,7 @@ public class GetVersionlMessage {
         conn.setConnectTimeout(3 * 1000);
         conn.connect();
         BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        String version = reader.lines().parallel().skip(8).limit(1).collect(Collectors.toList()).get(0);
+        String version = reader.lines().parallel().skip(8).limit(1).collect(Collectors.joining());
         List<String> versionList = getMsg(version);
         sender.sendMessage("§e===============================================");
         for (String versionMsg : versionList) {

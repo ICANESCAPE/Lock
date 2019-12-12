@@ -17,7 +17,7 @@ public class Update implements SubCommand {
             if (args.length == 2 && args[1].equalsIgnoreCase("download")) {
                 LockData.getPool().submit(() -> {
                     try {
-                        DownloadUtil.download("https://github.com/ICANESCAPE/Lock/releases/download/" + Lock.getInstance().getDescription().getVersion() + "/Lock.jar","Lock.jar",Lock.getInstance().getDataFolder().getPath() + "\\update");
+                        DownloadUtil.download(sender, "https://github.com/ICANESCAPE/Lock/releases/download/" + Lock.getInstance().getDescription().getVersion() + "/Lock.jar","Lock.jar",Lock.getInstance().getDataFolder().getPath() + "\\update");
                         sender.sendMessage("§7[§eLock§7]§2下载成功");
                     } catch (IOException e) {
                         sender.sendMessage("§7[§eLock§7]§c下载更新时出错");

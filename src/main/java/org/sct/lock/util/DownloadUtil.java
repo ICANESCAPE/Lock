@@ -27,7 +27,7 @@ public class DownloadUtil {
         }
         File file = new File(saveDir + File.separator + fileName);
         FileOutputStream fos = new FileOutputStream(file);
-        sender.sendMessage("§7[§eLock§7]§2文件输出输出中.....");
+        sender.sendMessage("§7[§eLock§7]§2文件输出中.....");
         fos.write(getData);
         if (fos != null) {
             fos.close();

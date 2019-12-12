@@ -1,11 +1,13 @@
 package org.sct.lock.util;
 
 import org.bukkit.command.CommandSender;
-
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * @author icestar
+ */
 public class DownloadUtil {
 
     public static void download(CommandSender sender, String urlString, String fileName, String savePath) throws IOException {

@@ -4,9 +4,11 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.BlockFace;
 import org.bukkit.event.player.PlayerInteractEvent;
-
 import org.sct.lock.data.LockData;
 
+/**
+ * @author icestar
+ */
 public class LockUtil {
 
     public static void getLocation(PlayerInteractEvent e) {

@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author icestar
+ */
 public class GetVersionlMessage {
     public static void get(CommandSender sender) throws IOException {
         URL url = new URL("https://lovesasuna.github.io/update/Lock");

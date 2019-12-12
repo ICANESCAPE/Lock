@@ -27,4 +27,20 @@ public class BasicUtil {
         return materialList;
     }
 
+    public static int ExtraceInt(String string) {
+        String s = string.trim();
+        String collect = "";
+        if (s != null && !"".equals(s)) {
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) >= 48 && s.charAt(i) <= 57) {
+                    if (s.charAt(i-1) == 38) {
+                        continue;
+                    }
+                    collect += s.charAt(i);
+                }
+            }
+        }
+        return Integer.parseInt(collect);
+    }
+
 }

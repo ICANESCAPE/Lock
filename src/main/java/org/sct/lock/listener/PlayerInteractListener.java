@@ -55,15 +55,11 @@ public class PlayerInteractListener implements Listener {
                         TeleportUtil.EnterTp(e.getPlayer());
                     }
                 }
+
             }
-
-
 
         }
 
-
-
     }
-
-
+    
 }

@@ -4,6 +4,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.sct.lock.data.LockData;
 import org.sct.lock.enumeration.ConfigType;
@@ -40,7 +41,10 @@ public class CheckUtil {
         for (String sign : BasicUtil.convertMaterial(Config.getStringList(ConfigType.SETTING_SIGNTYPE))) {
             Material signMaterial = Material.getMaterial(sign);
             if (new Location(player.getWorld(),X,Y,Z).getBlock().getType() == signMaterial) {
-
+                Sign Sign = (Sign) new Location(player.getWorld(),X,Y,Z).getBlock().getState();
+                if (!Sign.getLine(0).equalsIgnoreCase(BasicUtil.convert(Config.getString(ConfigType.SETTING_SYMBOLREPLACE)))) {
+                    continue;
+                }
                 //存入玩家交互的门上方的牌子
                 LockData.getPlayerSign().put(player,new Location(player.getWorld(),X,Y,Z).getBlock());
 

@@ -27,7 +27,7 @@ public class UpdateUtil {
                 Lock.getInstance().getServer().getConsoleSender().sendMessage("§7[§eLock§7]§2你正在使用最新的" + currentVersion + "版本");
             } else {
                 Lock.getInstance().getServer().getConsoleSender().sendMessage("§7[§eLock§7]§c最新版本为" + newestversion);
-                GetUrlMessage.get(Lock.getInstance().getServer().getConsoleSender());
+                GetVersionlMessage.get(Lock.getInstance().getServer().getConsoleSender());
                 Lock.getInstance().getServer().getConsoleSender().sendMessage("§7[§eLock§7]§c请前往https://www.mcbbs.net/thread-916058-1-1.html下载");
             }
         } catch (IOException e) {

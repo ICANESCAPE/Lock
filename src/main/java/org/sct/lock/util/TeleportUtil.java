@@ -2,13 +2,18 @@ package org.sct.lock.util;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
+import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.sct.lock.data.LockData;
+import org.sct.lock.enumeration.ConfigType;
+import org.sct.lock.file.Config;
 
 
 public class TeleportUtil {
     public static void EnterTp(Player player) {
         Block sign = LockData.getPlayerSign().get(player);
+        Sign Sign = (Sign) sign.getState();
+        int charge = BasicUtil.ExtraceInt(Sign.getLine(1).trim());
         Block block = LockData.getPlayerBlock().get(player);
         String blockFace = sign.getBlockData().getAsString().split(",")[0].split("=")[1];
         //判断是出门还是进门
@@ -38,6 +43,7 @@ public class TeleportUtil {
                 BlockZ += 0.5;
             }
             player.teleport(new Location(player.getWorld(),BlockX,PlayerY,BlockZ,player.getLocation().getYaw(),player.getLocation().getPitch()));
+            EcoUtil.take(player,charge);
         } else if (status.equalsIgnoreCase("leave")) {
             if (blockFace.equalsIgnoreCase("north")) {
                 BlockZ -= 0.5;

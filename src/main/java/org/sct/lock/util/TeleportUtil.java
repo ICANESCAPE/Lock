@@ -5,6 +5,9 @@ import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.sct.lock.data.LockData;
+import org.sct.lock.enumeration.LangType;
+import org.sct.lock.file.Lang;
+
 /**
  * @author icestar
  */
@@ -42,6 +45,7 @@ public class TeleportUtil {
                 BlockZ += 0.5;
             }
             player.teleport(new Location(player.getWorld(),BlockX,PlayerY,BlockZ,player.getLocation().getYaw(),player.getLocation().getPitch()));
+            player.sendMessage(BasicUtil.replace(Lang.getString(LangType.LANG_ENTER),"%charge",charge));
             EcoUtil.take(player,charge);
         } else if (status.equalsIgnoreCase("leave")) {
             if (blockFace.equalsIgnoreCase("north")) {
@@ -61,6 +65,7 @@ public class TeleportUtil {
                 BlockZ += 0.5;
             }
             player.teleport(new Location(player.getWorld(),BlockX,PlayerY,BlockZ,player.getLocation().getYaw(),player.getLocation().getPitch()));
+            player.sendMessage(Lang.getString(LangType.LANG_LEAVE));
         }
 
     }

@@ -43,4 +43,8 @@ public class BasicUtil {
         return Integer.parseInt(collect);
     }
 
+    public static <T> String replace(String message, String var, T replace) {
+        return message.replace(var, String.valueOf(replace));
+    }
+
 }

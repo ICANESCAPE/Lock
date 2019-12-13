@@ -15,3 +15,7 @@ Language:
   Reload: "&7[&eLock&7]&2插件配置重载成功"
   #创建收费锁成功
   Create: "&7[&eLock&7]&2自动收费门创建成功"
+  #成功进入收费门
+  Enter: "&7[&eLock&7]&2进入成功，你已消费 &b%charge &2货币"
+  #成功出收费门
+  Leave: "&7[&eLock&7]&2出收费门成功"

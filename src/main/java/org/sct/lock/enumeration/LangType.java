@@ -11,7 +11,9 @@ public enum LangType {
     LANG_NOPERMISSION("Language.NoPermission"),
     LANG_RELOAD("Language.Reload"),
     LANG_CREATE("Language.Create"),
-    LANG_COMMANDERROR("Language.CommandError");
+    LANG_COMMANDERROR("Language.CommandError"),
+    LANG_ENTER("Language.Enter"),
+    LANG_LEAVE("Language.Leave");
 
     @Getter String path;
 

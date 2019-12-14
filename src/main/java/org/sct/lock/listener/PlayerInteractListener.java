@@ -31,6 +31,8 @@ public class PlayerInteractListener implements Listener {
 
         //如果玩家右键方块
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+
+            /*事件抑制*/
             if (LockData.getInhibition().get(e.getPlayer()) != null) {
                 return;
             } else {

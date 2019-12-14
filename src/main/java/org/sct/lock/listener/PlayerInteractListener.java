@@ -14,6 +14,7 @@ import org.sct.lock.util.LockUtil;
 import org.sct.lock.util.TeleportUtil;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.sct.lock.Lock.*;
 
@@ -27,8 +28,20 @@ public class PlayerInteractListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent e) {
         List<String> signList = Config.getStringList(ConfigType.SETTING_SIGNTYPE);
         List<String> doorList = Config.getStringList(ConfigType.SETTING_DOORTYPE);
+
         //如果玩家右键方块
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+            if (LockData.getInhibition().get(e.getPlayer()) != null) {
+                return;
+            } else {
+                LockData.getInhibition().put(e.getPlayer(),true);
+                LockData.getScheduledpool().schedule(() -> {
+                    LockData.getInhibition().remove(e.getPlayer());
+                }, 1, TimeUnit.MILLISECONDS);
+            }
+
+
+            e.getPlayer().sendMessage("1");
             //如果玩家手持物品
             if (e.hasItem()) {
                 for (String sign : signList) {

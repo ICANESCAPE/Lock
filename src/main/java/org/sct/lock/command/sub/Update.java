@@ -3,6 +3,8 @@ package org.sct.lock.command.sub;
 import org.bukkit.command.CommandSender;
 import org.sct.lock.Lock;
 import org.sct.lock.data.LockData;
+import org.sct.lock.enumeration.LangType;
+import org.sct.lock.file.Lang;
 import org.sct.lock.util.DownloadUtil;
 import org.sct.lock.util.GetVersionlMessage;
 import org.sct.lock.util.SubCommand;
@@ -13,6 +15,10 @@ public class Update implements SubCommand {
 
     @Override
     public boolean execute(CommandSender sender, String[] args) {
+        if (!sender.isOp()) {
+            sender.sendMessage(Lang.getString(LangType.LANG_NOPERMISSION));
+        }
+        
         if (args.length == 2) {
             if (args.length == 2 && args[1].equalsIgnoreCase("download")) {
                 LockData.getPool().submit(() -> {

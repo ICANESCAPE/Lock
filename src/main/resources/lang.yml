@@ -19,3 +19,5 @@ Language:
   Enter: "&7[&eLock&7]&2进入成功，你已消费 &b%charge &2货币"
   #成功出收费门
   Leave: "&7[&eLock&7]&2出收费门成功"
+  #当钱不够时的提示
+  NotEnoughMoney: "&7[&eLock&7]&c抱歉，你拥有的钱不足以支付通过收费门"

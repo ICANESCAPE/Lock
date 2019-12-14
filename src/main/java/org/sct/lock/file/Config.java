@@ -13,7 +13,7 @@ public class Config {
     public static String getString(ConfigType configType) {
         return config.getString(configType.getPath());
     }
-    
+
     public static int getInteger(ConfigType configType) {
         return config.getInt(configType.getPath());
     }

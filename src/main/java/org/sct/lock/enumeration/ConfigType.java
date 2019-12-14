@@ -19,7 +19,8 @@ public enum ConfigType {
     SETTING_LEAVEREPLACE("Setting.LeaveReplace"),
     SETTING_DOORTYPE("Setting.DoorType"),
     SETTING_SIGNTYPE("Setting.SignType"),
-    SETTING_CHARGE("Setting.Charge");
+    SETTING_CHARGE("Setting.Charge"),
+    SETTING_ENTERDELAY("Setting.EnterDelay");
 
 
     @Getter String path;

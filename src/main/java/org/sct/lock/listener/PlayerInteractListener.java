@@ -39,7 +39,7 @@ public class PlayerInteractListener implements Listener {
                 LockData.getInhibition().put(e.getPlayer(),true);
                 LockData.getScheduledpool().schedule(() -> {
                     LockData.getInhibition().remove(e.getPlayer());
-                }, 1, TimeUnit.MILLISECONDS);
+                }, Config.getInteger(ConfigType.SETTING_ENTERDELAY), TimeUnit.MILLISECONDS);
             }
 
 

@@ -41,7 +41,7 @@ public class PlayerInteractListener implements Listener {
                     LockData.getInhibition().remove(e.getPlayer());
                 }, Config.getInteger(ConfigType.SETTING_ENTERDELAY), TimeUnit.MILLISECONDS);
             }
-            
+
             //如果玩家手持物品
             if (e.hasItem()) {
                 for (String sign : signList) {

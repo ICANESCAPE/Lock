@@ -13,7 +13,8 @@ public enum LangType {
     LANG_CREATE("Language.Create"),
     LANG_COMMANDERROR("Language.CommandError"),
     LANG_ENTER("Language.Enter"),
-    LANG_LEAVE("Language.Leave");
+    LANG_LEAVE("Language.Leave"),
+    LANG_NOTENOUGHMONEY("Language.NotEnoughMoney");
 
     @Getter String path;
 

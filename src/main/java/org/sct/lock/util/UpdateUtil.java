@@ -27,7 +27,7 @@ public class UpdateUtil {
             } else {
                 Lock.getInstance().getServer().getConsoleSender().sendMessage("§7[§eLock§7]§c最新版本为" + newestversion);
                 GetVersionlMessage.get(Lock.getInstance().getServer().getConsoleSender());
-                Lock.getInstance().getServer().getConsoleSender().sendMessage("§7[§eLock§7]§c请前往https://www.mcbbs.net/thread-916058-1-1.html下载");
+                Lock.getInstance().getServer().getConsoleSender().sendMessage("§7[§eLock§7]§c请前往https://www.mcbbs.net/thread-932739-1-1.html下载");
             }
         } catch (IOException e) {
             Lock.getInstance().getLogger().severe("插件在检测版本时发生错误!");

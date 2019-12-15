@@ -1,0 +1,11 @@
+name: Lock
+version: 1.0-SNAPSHOT
+main: org.sct.lock.Lock
+api-version: "1.13"
+description: "自动收费门"
+commands:
+  lock:
+    description: "插件主命令"
+    usage: "/lock"
+    aliases: [locks]
+    permission: none

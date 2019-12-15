@@ -18,7 +18,7 @@ public class Update implements SubCommand {
         if (!sender.isOp()) {
             sender.sendMessage(Lang.getString(LangType.LANG_NOPERMISSION));
         }
-        
+
         if (args.length == 2) {
             if (args.length == 2 && args[1].equalsIgnoreCase("download")) {
                 LockData.getPool().submit(() -> {

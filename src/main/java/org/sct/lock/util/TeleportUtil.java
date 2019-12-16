@@ -47,14 +47,7 @@ public class TeleportUtil {
             }
 
             player.teleport(new Location(player.getWorld(),BlockX,PlayerY,BlockZ,player.getLocation().getYaw(),player.getLocation().getPitch()));
-            player.sendMessage(BasicUtil.replace(Lang.getString(LangType.LANG_ENTER),"%charge", charge));
 
-            /*if (EcoUtil.has(player, charge)) {
-
-                EcoUtil.take(player,charge);
-            } else {
-                player.sendMessage(BasicUtil.convert(Lang.getString(LangType.LANG_NOTENOUGHMONEY)));
-            }*/
 
         } else if (status.equalsIgnoreCase("leave")) {
             if (blockFace.equalsIgnoreCase("north")) {

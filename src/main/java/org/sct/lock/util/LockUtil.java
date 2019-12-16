@@ -10,6 +10,8 @@ import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.sct.lock.data.LockData;
+import org.sct.lock.enumeration.ConfigType;
+import org.sct.lock.file.Config;
 
 /**
  * @author icestar
@@ -44,15 +46,21 @@ public class LockUtil {
         }
     }
 
+    /**
+     * @param block 牌子
+     * @return Player 牌子拥有者
+     */
     public static Player getOwner(Block block) {
 
-        if (!block.getType().equals(Material.SIGN)) {
-            return null;
+        for (String  materialString : BasicUtil.convertMaterial(Config.getStringList(ConfigType.SETTING_SIGNTYPE))) {
+            Material material = Material.getMaterial(materialString);
+            if (!block.getType().equals(material)) {
+                return null;
+            }
         }
 
-        Sign sign = (Sign) block;
-
-        return Bukkit.getPlayer(sign.getLine(3));
+        Sign sign = (Sign) block.getState();
+        return Bukkit.getPlayer(sign.getLine(3).replace("§l",""));
 
     }
 

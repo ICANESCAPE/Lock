@@ -2,7 +2,7 @@ package org.sct.lock.event;
 
 import lombok.Getter;
 
-import org.bukkit.block.Sign;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -17,23 +17,24 @@ public class PlayerAccessLockDoorEvent extends Event {
 
     @Getter Player payer;
     @Getter Player owner;
-    @Getter Sign sign;
+    @Getter Block block;
 
     /**
      * 构造函数
      *
      * @param payer 支付费用使用收费门的玩家
      * @param owner 收费门的所有者
-     * @param sign 收费门上面的木牌，用于判断信息
+     * @param block 收费门上面的木牌，用于判断信息
      */
-    public PlayerAccessLockDoorEvent(Player payer, Player owner, Sign sign) {
+    public PlayerAccessLockDoorEvent(Player payer, Player owner, Block block) {
         this.payer = payer;
         this.owner = owner;
-        this.sign = sign;
+        this.block = block;
     }
 
     @Override
     public HandlerList getHandlers() {
         return null;
     }
+
 }

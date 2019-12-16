@@ -8,6 +8,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.sct.lock.data.LockData;
 import org.sct.lock.enumeration.ConfigType;
+import org.sct.lock.event.PlayerAccessLockDoorEvent;
 import org.sct.lock.file.Config;
 import org.sct.lock.util.CheckUtil;
 import org.sct.lock.util.LockUtil;
@@ -64,8 +65,8 @@ public class PlayerInteractListener implements Listener {
                 if (e.getClickedBlock().getType() == Material.getMaterial(door)) {
                     //如果门的上方有自动收费门的牌子,在CheckUtil内存入牌子和方块的位置
                     if (CheckUtil.CheckSign(e.getPlayer(),e.getClickedBlock())) {
-                        //传送
-                        TeleportUtil.EnterTp(e.getPlayer());
+                        Bukkit.getPluginManager().callEvent(new PlayerAccessLockDoorEvent(e.getPlayer(), LockUtil.getOwner(e.getClickedBlock()), e.getClickedBlock()));
+                        //TeleportUtil.enterTp(e.getPlayer());
                     }
                 }
 

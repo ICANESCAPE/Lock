@@ -12,7 +12,8 @@ import org.sct.lock.file.Lang;
  * @author icestar
  */
 public class TeleportUtil {
-    public static void EnterTp(Player player) {
+
+    public static void enterTp(Player player) {
         Block sign = LockData.getPlayerSign().get(player);
         Sign Sign = (Sign) sign.getState();
         int charge = BasicUtil.ExtraceInt(Sign.getLine(1).trim());
@@ -44,13 +45,16 @@ public class TeleportUtil {
                 BlockX -= 0.5;
                 BlockZ += 0.5;
             }
-            if (EcoUtil.has(player, charge)) {
-                player.teleport(new Location(player.getWorld(),BlockX,PlayerY,BlockZ,player.getLocation().getYaw(),player.getLocation().getPitch()));
-                player.sendMessage(BasicUtil.replace(Lang.getString(LangType.LANG_ENTER),"%charge", charge));
+
+            player.teleport(new Location(player.getWorld(),BlockX,PlayerY,BlockZ,player.getLocation().getYaw(),player.getLocation().getPitch()));
+            player.sendMessage(BasicUtil.replace(Lang.getString(LangType.LANG_ENTER),"%charge", charge));
+
+            /*if (EcoUtil.has(player, charge)) {
+
                 EcoUtil.take(player,charge);
             } else {
                 player.sendMessage(BasicUtil.convert(Lang.getString(LangType.LANG_NOTENOUGHMONEY)));
-            }
+            }*/
 
         } else if (status.equalsIgnoreCase("leave")) {
             if (blockFace.equalsIgnoreCase("north")) {

@@ -5,7 +5,6 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 import net.milkbowl.vault.economy.Economy;
-import org.sct.lock.Lock;
 
 public final class EcoUtil {
 

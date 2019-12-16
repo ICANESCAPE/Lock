@@ -1,8 +1,13 @@
 package org.sct.lock.util;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.block.Sign;
+import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.sct.lock.data.LockData;
 
@@ -38,5 +43,18 @@ public class LockUtil {
             LockData.getPlayerLocation().put(e.getPlayer(), new Location(e.getPlayer().getWorld(),X,LowY,Z));
         }
     }
+
+    public static Player getOwner(Block block) {
+
+        if (!block.getType().equals(Material.SIGN)) {
+            return null;
+        }
+
+        Sign sign = (Sign) block;
+
+        return Bukkit.getPlayer(sign.getLine(3));
+
+    }
+
 
 }

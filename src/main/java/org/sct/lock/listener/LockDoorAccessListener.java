@@ -1,7 +1,16 @@
 package org.sct.lock.listener;
 
+import org.bukkit.block.Sign;
 import org.bukkit.event.Listener;
+import org.sct.lock.enumeration.ConfigType;
+import org.sct.lock.enumeration.LangType;
 import org.sct.lock.event.PlayerAccessLockDoorEvent;
+import org.sct.lock.file.Config;
+import org.sct.lock.file.Lang;
+import org.sct.lock.util.BasicUtil;
+import org.sct.lock.util.EcoUtil;
+import org.sct.lock.util.LockUtil;
+import org.sct.lock.util.TeleportUtil;
 
 /**
  * @author alchemy
@@ -11,9 +20,29 @@ import org.sct.lock.event.PlayerAccessLockDoorEvent;
 public class LockDoorAccessListener implements Listener {
 
     void onAccess(PlayerAccessLockDoorEvent e) {
-        /**
-         * 税率等等操作写在这里
-         */
+        Sign sign = (Sign) e.getBlock();
+        int charge = BasicUtil.ExtraceInt(sign.getLine(1).trim());
+        if (!EcoUtil.has(e.getPayer(), charge)) {
+            e.getPayer().sendMessage(Lang.getString(LangType.LANG_NOTENOUGHMONEY));
+            return;
+        }
+
+        if (Config.getString(ConfigType.SETTING_VIPALLOWED) != null) {
+            if (e.getPayer().hasPermission(Config.getString(ConfigType.SETTING_VIPALLOWED))) {
+                EcoUtil.take(e.getPayer(), charge);
+            } else {
+                EcoUtil.take(e.getPayer(), charge * (1 + Config.getInteger(ConfigType.SETTING_TAXPERCENT)));
+            }
+            if (LockUtil.getOwner(e.getBlock()).hasPermission(Config.getString(ConfigType.SETTING_VIPALLOWED))) {
+                EcoUtil.give(LockUtil.getOwner(e.getBlock()), charge);
+            } else {
+                EcoUtil.take(e.getPayer(), charge * Config.getInteger(ConfigType.SETTING_TAXPERCENT));
+            }
+        }
+
+        TeleportUtil.enterTp(e.getPayer());
+
+
     }
 
 }

@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="Lock">
-    <output-path>$PROJECT_DIR$/..</output-path>
+    <output-path>$PROJECT_DIR$/../../1.14.4test/plugins</output-path>
     <root id="archive" name="Lock.jar">
       <element id="module-output" name="lock" />
     </root>

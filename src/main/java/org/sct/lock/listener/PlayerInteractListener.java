@@ -65,12 +65,7 @@ public class PlayerInteractListener implements Listener {
                 if (e.getClickedBlock().getType() == Material.getMaterial(door)) {
                     //如果门的上方有自动收费门的牌子,在CheckUtil内存入牌子和方块的位置
                     if (CheckUtil.CheckSign(e.getPlayer(), e.getClickedBlock())) {
-                        /**
-                         * 判断如果为进入，则触发自定义事件
-                         */
-                        if (TeleportUtil.isEntering(e.getPlayer())) {
-                            Bukkit.getPluginManager().callEvent(new PlayerAccessLockDoorEvent(e.getPlayer(), LockUtil.getOwner(LockData.getPlayerSign().get(e.getPlayer())), LockData.getPlayerSign().get(e.getPlayer())));
-                        }
+                        Bukkit.getPluginManager().callEvent(new PlayerAccessLockDoorEvent(e.getPlayer(), LockUtil.getOwner(LockData.getPlayerSign().get(e.getPlayer())), LockData.getPlayerSign().get(e.getPlayer())));
                     }
                 }
 

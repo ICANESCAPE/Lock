@@ -26,26 +26,30 @@ public class LockDoorAccessListener implements Listener {
 
         Sign sign = (Sign) e.getBlock().getState();
         int charge = BasicUtil.ExtraceInt(sign.getLine(1).trim());
-        if (!EcoUtil.has(e.getPayer(), charge)) {
-            e.getPayer().sendMessage(Lang.getString(LangType.LANG_NOTENOUGHMONEY));
-            return;
-        }
 
-        if (Config.getString(ConfigType.SETTING_VIPALLOWED) != null) {
-            if (e.getPayer().hasPermission(Config.getString(ConfigType.SETTING_VIPALLOWED))) {
-                EcoUtil.take(e.getPayer(), charge);
-                e.getPayer().sendMessage(BasicUtil.replace(Lang.getString(LangType.LANG_ENTER),"%charge", charge));
-            } else {
-                EcoUtil.take(e.getPayer(), charge * (1 + Config.getInteger(ConfigType.SETTING_TAXPERCENT)));
-                e.getPayer().sendMessage(BasicUtil.replace(Lang.getString(LangType.LANG_ENTER),"%charge", charge));
+        /*如果执行传送并返回进出状态，以此来进行扣费操作*/
+        String status = TeleportUtil.Tp(e.getPayer());
+
+        if ("enter".equalsIgnoreCase(status)) {
+            /*如果余额不足*/
+            if (!EcoUtil.has(e.getPayer(), charge)) {
+                e.getPayer().sendMessage(Lang.getString(LangType.LANG_NOTENOUGHMONEY));
+                return;
             }
-            if (LockUtil.getOwner(e.getBlock()).hasPermission(Config.getString(ConfigType.SETTING_VIPALLOWED))) {
+
+            /*payer付钱部分*/
+            EcoUtil.take(e.getPayer(), charge);
+            e.getPayer().sendMessage(BasicUtil.replace(Lang.getString(LangType.LANG_ENTER),"%charge", charge));
+
+            /*如果owner是vip或权限未设置*/
+            if (!"".equalsIgnoreCase(Config.getString(ConfigType.SETTING_VIPALLOWED)) || LockUtil.getOwner(e.getBlock()).hasPermission(Config.getString(ConfigType.SETTING_VIPALLOWED))) {
                 EcoUtil.give(LockUtil.getOwner(e.getBlock()), charge);
             } else {
-                EcoUtil.take(e.getPayer(), charge * Config.getInteger(ConfigType.SETTING_TAXPERCENT));
+                /*owner不是vip,扣税*/
+                EcoUtil.give(LockUtil.getOwner(e.getBlock()), (1 - Config.getInteger(ConfigType.SETTING_TAXPERCENT)) * charge);
             }
+
         }
-        TeleportUtil.enterTp(e.getPayer());
 
     }
 

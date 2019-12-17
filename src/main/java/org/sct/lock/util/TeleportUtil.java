@@ -4,6 +4,7 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
+
 import org.sct.lock.data.LockData;
 import org.sct.lock.enumeration.LangType;
 import org.sct.lock.file.Lang;
@@ -12,6 +13,27 @@ import org.sct.lock.file.Lang;
  * @author icestar
  */
 public class TeleportUtil {
+
+    /**
+     * 判断方向是否是进入
+     *
+     * @param player 玩家
+     * @return true-进入
+     */
+    public static boolean isEntering(Player player) {
+
+        Block sign = LockData.getPlayerSign().get(player);
+        Sign Sign = (Sign) sign.getState();
+        Block block = LockData.getPlayerBlock().get(player);
+        String blockFace = sign.getBlockData().getAsString().split(",")[0].split("=")[1];
+        double PlayerX = player.getLocation().getBlockX();
+        double PlayerY = player.getLocation().getBlockY();
+        double PlayerZ = player.getLocation().getBlockZ();
+        double BlockX = block.getLocation().getBlockX();
+        double BlockZ = block.getLocation().getBlockZ();
+
+        return judgeStatus(blockFace, PlayerX, PlayerZ, BlockX, BlockZ).equalsIgnoreCase("enter");
+    }
 
     public static void enterTp(Player player) {
         Block sign = LockData.getPlayerSign().get(player);
@@ -45,7 +67,6 @@ public class TeleportUtil {
                 BlockX -= 0.5;
                 BlockZ += 0.5;
             }
-
             player.teleport(new Location(player.getWorld(),BlockX,PlayerY,BlockZ,player.getLocation().getYaw(),player.getLocation().getPitch()));
 
 

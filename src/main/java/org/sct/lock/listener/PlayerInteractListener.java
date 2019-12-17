@@ -2,17 +2,17 @@ package org.sct.lock.listener;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+
 import org.sct.lock.data.LockData;
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.event.PlayerAccessLockDoorEvent;
 import org.sct.lock.file.Config;
-import org.sct.lock.util.CheckUtil;
-import org.sct.lock.util.LockUtil;
-import org.sct.lock.util.TeleportUtil;
+import org.sct.lock.util.*;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -65,7 +65,12 @@ public class PlayerInteractListener implements Listener {
                 if (e.getClickedBlock().getType() == Material.getMaterial(door)) {
                     //如果门的上方有自动收费门的牌子,在CheckUtil内存入牌子和方块的位置
                     if (CheckUtil.CheckSign(e.getPlayer(), e.getClickedBlock())) {
-                        Bukkit.getPluginManager().callEvent(new PlayerAccessLockDoorEvent(e.getPlayer(), LockUtil.getOwner(LockData.getPlayerSign().get(e.getPlayer())), LockData.getPlayerSign().get(e.getPlayer())));
+                        /**
+                         * 判断如果为进入，则触发自定义事件
+                         */
+                        if (TeleportUtil.isEntering(e.getPlayer())) {
+                            Bukkit.getPluginManager().callEvent(new PlayerAccessLockDoorEvent(e.getPlayer(), LockUtil.getOwner(LockData.getPlayerSign().get(e.getPlayer())), LockData.getPlayerSign().get(e.getPlayer())));
+                        }
                     }
                 }
 

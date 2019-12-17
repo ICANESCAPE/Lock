@@ -3,6 +3,7 @@ package org.sct.lock.listener;
 import org.bukkit.block.Sign;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.enumeration.LangType;
 import org.sct.lock.event.PlayerAccessLockDoorEvent;
@@ -44,9 +45,7 @@ public class LockDoorAccessListener implements Listener {
                 EcoUtil.take(e.getPayer(), charge * Config.getInteger(ConfigType.SETTING_TAXPERCENT));
             }
         }
-
         TeleportUtil.enterTp(e.getPayer());
-
 
     }
 

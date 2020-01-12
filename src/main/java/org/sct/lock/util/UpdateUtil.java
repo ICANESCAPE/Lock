@@ -31,7 +31,6 @@ public class UpdateUtil {
             }
         } catch (IOException e) {
             Lock.getInstance().getLogger().severe("插件在检测版本时发生错误!");
-            e.printStackTrace();
         }
     }
 }

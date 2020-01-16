@@ -27,8 +27,11 @@ public class LockDoorAccessListener implements Listener {
         Sign sign = (Sign) e.getBlock().getState();
         int charge = BasicUtil.ExtraceInt(sign.getLine(1).trim());
 
+        /*设置状态数据*/
+        TeleportUtil.getData(e.getPayer());
+
         /*如果执行传送并返回进出状态，以此来进行扣费操作*/
-        String status = TeleportUtil.Tp(e.getPayer());
+        String status = TeleportUtil.getFace(e.getPayer());
 
         if ("enter".equalsIgnoreCase(status)) {
             /*如果余额不足*/
@@ -37,6 +40,7 @@ public class LockDoorAccessListener implements Listener {
                 return;
             }
 
+            TeleportUtil.Tp(status, e.getPayer());
             /*payer付钱部分*/
             EcoUtil.take(e.getPayer(), charge);
             e.getPayer().sendMessage(BasicUtil.replace(Lang.getString(LangType.LANG_ENTER),"%charge", charge));

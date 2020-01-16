@@ -6,31 +6,23 @@ import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 
 import org.sct.lock.data.LockData;
-import org.sct.lock.enumeration.LangType;
-import org.sct.lock.file.Lang;
+
 
 /**
  * @author icestar
  */
 public class TeleportUtil {
+    private static Block sign,block;
+    private static Sign Sign;
+    private static int charge;
+    private static double PlayerX,PlayerY,PlayerZ,BlockX,BlockZ;
+    private static String blockFace;
 
     /**
      * @param player 被tp的玩家(payer)
      * @return 进出状态
      */
-    public static String Tp(Player player) {
-        Block sign = LockData.getPlayerSign().get(player);
-        Sign Sign = (Sign) sign.getState();
-        int charge = BasicUtil.ExtraceInt(Sign.getLine(1).trim());
-        Block block = LockData.getPlayerBlock().get(player);
-
-        /*通过blockdata获取牌子朝向*/
-        String blockFace = sign.getBlockData().getAsString().split(",")[0].split("=")[1];
-        double PlayerX = player.getLocation().getBlockX();
-        double PlayerY = player.getLocation().getBlockY();
-        double PlayerZ = player.getLocation().getBlockZ();
-        double BlockX = block.getLocation().getBlockX();
-        double BlockZ = block.getLocation().getBlockZ();
+    public static String getFace(Player player) {
 
         /*判断进出状态*/
         String status = null;
@@ -60,6 +52,11 @@ public class TeleportUtil {
             }
         }
 
+
+        return status;
+    }
+
+    public static void Tp(String status, Player player) {
         /*传送部分*/
         if (status.equalsIgnoreCase("enter")) {
             if (blockFace.equalsIgnoreCase("north")) {
@@ -100,7 +97,21 @@ public class TeleportUtil {
             player.teleport(new Location(player.getWorld(), BlockX, PlayerY, BlockZ, player.getLocation().getYaw(), player.getLocation().getPitch()));
 
         }
-        return status;
+    }
+
+    public static void getData(Player player) {
+        sign = LockData.getPlayerSign().get(player);
+        Sign = (Sign) sign.getState();
+        charge = BasicUtil.ExtraceInt(Sign.getLine(1).trim());
+        block = LockData.getPlayerBlock().get(player);
+
+        /*通过blockdata获取牌子朝向*/
+        blockFace = sign.getBlockData().getAsString().split(",")[0].split("=")[1];
+        PlayerX = player.getLocation().getBlockX();
+        PlayerY = player.getLocation().getBlockY();
+        PlayerZ = player.getLocation().getBlockZ();
+        BlockX = block.getLocation().getBlockX();
+        BlockZ = block.getLocation().getBlockZ();
     }
 
 }

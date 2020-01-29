@@ -33,6 +33,16 @@ public class LockDoorAccessListener implements Listener {
         /*如果执行传送并返回进出状态，以此来进行扣费操作*/
         String status = TeleportUtil.getFace(e.getPayer());
 
+        /*收费门指定允许的方向*/
+        String direction = LockUtil.getDirection(e.getBlock());
+
+        if (!direction.equals("double")) {
+            if (!status.equals(direction)) {
+                e.getPayer().sendMessage(BasicUtil.convert(Lang.getString(LangType.LANG_DENYDIRECTION)));
+                return;
+            }
+        }
+
         if ("enter".equalsIgnoreCase(status)) {
             /*如果余额不足*/
             if (!EcoUtil.has(e.getPayer(), charge)) {

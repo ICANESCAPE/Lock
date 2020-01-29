@@ -14,7 +14,7 @@ public enum ConfigType {
     SETTING_LOCKSYMBOL("Setting.LockSymbol"),
     SETTING_SYMBOLREPLACE("Setting.SymbolReplace"),
     SETTING_FLAGENTER("Setting.FlagEnter"),
-    SETTING_FLAGLEAVE("Setting.FLagLeave"),
+    SETTING_FLAGLEAVE("Setting.FlagLeave"),
     SETTING_ENTERREPLACE("Setting.EnterReplace"),
     SETTING_LEAVEREPLACE("Setting.LeaveReplace"),
     SETTING_DOORTYPE("Setting.DoorType"),

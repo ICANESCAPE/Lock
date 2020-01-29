@@ -15,7 +15,12 @@ public class CheckUtil {
 
     private static int x,y,z;
 
-
+    /**
+     * @param world 门所处世界
+     * @param player 交互玩家(如果单纯检测而不存进map则保持为null)
+     * @param block 门
+     * @return 是否为收费门牌子
+     */
     public static boolean CheckSign(World world, Player player, Block block) {
         Location BlockLocation = block.getLocation();
         int X = BlockLocation.getBlockX();

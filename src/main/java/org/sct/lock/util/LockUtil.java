@@ -55,15 +55,33 @@ public class LockUtil {
 
         for (String  materialString : BasicUtil.convertMaterial(Config.getStringList(ConfigType.SETTING_SIGNTYPE))) {
             Material material = Material.getMaterial(materialString);
-            if (!block.getType().equals(material)) {
-                return null;
+            if (block.getType().equals(material)) {
+                Sign sign = (Sign) block.getState();
+                return Bukkit.getPlayer(sign.getLine(3).replace("§l",""));
             }
         }
 
-        Sign sign = (Sign) block.getState();
-        return Bukkit.getPlayer(sign.getLine(3).replace("§l",""));
-
+        return null;
     }
 
+    /**
+     * @param block 牌子
+     * @return String 收费门允许的方向
+     */
+    public static String getDirection(Block block) {
+        Sign sign = (Sign) block.getState();
+        String orign = sign.getLine(2);
+        String enter = BasicUtil.convert(Config.getString(ConfigType.SETTING_ENTERREPLACE));
+        String leave = BasicUtil.convert(Config.getString(ConfigType.SETTING_LEAVEREPLACE));
+        if (orign.equals(enter)) {
+            return "enter";
+        } else if (orign.equals(leave)) {
+            return "leave";
+        } else if (orign.contains(enter) && orign.contains(leave)) {
+            return "double";
+        } else {
+            return null;
+        }
+    }
 
 }

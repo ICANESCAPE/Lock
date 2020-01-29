@@ -4,10 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
 import org.sct.lock.Lock;
-import org.sct.lock.listener.LockDoorAccessListener;
-import org.sct.lock.listener.PlayerInteractListener;
-import org.sct.lock.listener.PlayerToggleSneakListener;
-import org.sct.lock.listener.SignChangeListener;
+import org.sct.lock.listener.*;
 
 public class ListenerManager {
 
@@ -23,6 +20,7 @@ public class ListenerManager {
         register(new SignChangeListener());
         register(new PlayerToggleSneakListener());
         register(new LockDoorAccessListener());
+        register(new BlockRedstone());
     }
 
 }

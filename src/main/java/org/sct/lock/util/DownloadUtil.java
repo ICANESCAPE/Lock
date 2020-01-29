@@ -17,7 +17,7 @@ public class DownloadUtil {
         /*设置超时时间为3秒*/
         conn.setConnectTimeout(3 * 1000);
         /*建立连接*/
-        sender.sendMessage("§7[§eLock§7]§2与下载源建立连接中.....");
+        sender.sendMessage("§7[§eLock§7]§2与下载源建立连接中.....(版本: " + UpdateUtil.newestversion + ")");
         /*得到输入流*/
         InputStream inputStream = conn.getInputStream();
         /*获取字节数组*/

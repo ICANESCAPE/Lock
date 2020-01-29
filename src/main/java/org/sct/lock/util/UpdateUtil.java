@@ -11,11 +11,13 @@ import java.net.URL;
  */
 public class UpdateUtil {
 
+    public static String newestversion = null;
+
     public static void checkupdate() {
         try {
             URL url = new URL("https://api.github.com/repos/ICANESCAPE/Lock/releases");
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
-            String newestversion = reader.readLine().split(",") [7];
+            newestversion = reader.readLine().split(",") [7];
             String currentVersion = Lock.getInstance().getDescription().getVersion();
             String[] replace = {"tag_name","\"",":"};
             for (String cr :replace) {

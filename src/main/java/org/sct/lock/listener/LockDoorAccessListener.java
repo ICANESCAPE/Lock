@@ -42,17 +42,19 @@ public class LockDoorAccessListener implements Listener {
 
             TeleportUtil.Tp(status, e.getPayer());
             /*payer付钱部分*/
-            EcoUtil.take(e.getPayer(), charge);
-            e.getPayer().sendMessage(BasicUtil.replace(Lang.getString(LangType.LANG_ENTER),"%charge", charge));
 
             /*如果owner是vip或权限未设置*/
             if (!"".equalsIgnoreCase(Config.getString(ConfigType.SETTING_VIPALLOWED)) || LockUtil.getOwner(e.getBlock()).hasPermission(Config.getString(ConfigType.SETTING_VIPALLOWED))) {
-                EcoUtil.give(LockUtil.getOwner(e.getBlock()), charge);
+                EcoUtil.take(LockUtil.getOwner(e.getBlock()), charge);
             } else {
                 /*owner不是vip,扣税*/
-                EcoUtil.give(LockUtil.getOwner(e.getBlock()), (1 - Config.getInteger(ConfigType.SETTING_TAXPERCENT)) * charge);
+                charge = (1 - Config.getInteger(ConfigType.SETTING_TAXPERCENT)) * charge;
+                EcoUtil.take(LockUtil.getOwner(e.getBlock()), charge);
             }
 
+            e.getPayer().sendMessage(BasicUtil.replace(Lang.getString(LangType.LANG_ENTER),"%charge", charge));
+        } else {
+            TeleportUtil.Tp("leave", e.getPayer());
         }
 
     }

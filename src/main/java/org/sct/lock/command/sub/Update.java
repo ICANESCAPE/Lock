@@ -8,6 +8,7 @@ import org.sct.lock.file.Lang;
 import org.sct.lock.util.DownloadUtil;
 import org.sct.lock.util.GetVersionlMessage;
 import org.sct.lock.util.SubCommand;
+import org.sct.lock.util.UpdateUtil;
 
 import java.io.IOException;
 
@@ -23,7 +24,7 @@ public class Update implements SubCommand {
             if (args.length == 2 && args[1].equalsIgnoreCase("download")) {
                 LockData.getPool().submit(() -> {
                     try {
-                        DownloadUtil.download(sender, "https://github.com/ICANESCAPE/Lock/releases/download/" + Lock.getInstance().getDescription().getVersion() + "/Lock.jar","Lock.jar",Lock.getInstance().getDataFolder().getPath() + "\\update");
+                        DownloadUtil.download(sender, "https://github.com/ICANESCAPE/Lock/releases/download/" + UpdateUtil.newestversion + "/Lock-Reloaded.jar","Lock-Reloaded.jar",Lock.getInstance().getDataFolder().getPath() + "\\update");
                         sender.sendMessage("§7[§eLock§7]§2下载成功");
                     } catch (IOException e) {
                         sender.sendMessage("§7[§eLock§7]§c下载更新时出错");

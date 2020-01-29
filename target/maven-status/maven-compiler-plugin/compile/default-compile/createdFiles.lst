@@ -8,6 +8,7 @@ org\sct\lock\command\sub\Help.class
 org\sct\lock\command\sub\Reload.class
 org\sct\lock\util\TeleportUtil.class
 org\sct\lock\listener\SignChangeListener.class
+org\sct\lock\listener\BlockRedstone.class
 org\sct\lock\util\CheckUtil.class
 org\sct\lock\util\ListenerManager.class
 org\sct\lock\file\Lang.class

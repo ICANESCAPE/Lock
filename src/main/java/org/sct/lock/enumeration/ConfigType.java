@@ -20,7 +20,9 @@ public enum ConfigType {
     SETTING_DOORTYPE("Setting.DoorType"),
     SETTING_SIGNTYPE("Setting.SignType"),
     SETTING_CHARGE("Setting.Charge"),
-    SETTING_ENTERDELAY("Setting.EnterDelay");
+    SETTING_ENTERDELAY("Setting.EnterDelay"),
+    SETTING_BANREDSTONEACTIVE("Setting.BanRedstoneActive"),
+    SETTING_BANREDSTONEACTIVERADIUS("Setting.BanRedstoneActiveRadius");
 
 
     @Getter String path;

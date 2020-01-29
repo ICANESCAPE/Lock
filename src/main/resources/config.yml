@@ -25,6 +25,8 @@ Setting:
   VipAllowed: "lock.vip"
   #如果启用VIP，是否允许免税特权
   TaxCancelable: true
+  #是否禁用红石激活
+  BanRedstoneActive: true
   #收费锁第一行标识(大小写不敏感)
   LockSymbol: "lock"
   #收费门被安装后显示的信息

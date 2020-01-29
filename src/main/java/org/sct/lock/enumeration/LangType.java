@@ -14,7 +14,8 @@ public enum LangType {
     LANG_COMMANDERROR("Language.CommandError"),
     LANG_ENTER("Language.Enter"),
     LANG_LEAVE("Language.Leave"),
-    LANG_NOTENOUGHMONEY("Language.NotEnoughMoney");
+    LANG_NOTENOUGHMONEY("Language.NotEnoughMoney"),
+    LANG_BANREDSTONE("Language.BanRedstone");
 
     @Getter String path;
 

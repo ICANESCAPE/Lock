@@ -48,7 +48,7 @@ public class SignChangeListener implements Listener {
                 if (e.getLine(2).equalsIgnoreCase(Config.getString(ConfigType.SETTING_FLAGENTER))) {
                     //替换第三行进
                     e.setLine(2,BasicUtil.convert(Config.getString(ConfigType.SETTING_ENTERREPLACE)));
-                } else if (e.getLine(2).equalsIgnoreCase(Config.getString(ConfigType.SETTING_FLAGENTER))) {
+                } else if (e.getLine(2).equalsIgnoreCase(Config.getString(ConfigType.SETTING_FLAGLEAVE))) {
                     //替换第三行出
                     e.setLine(2,BasicUtil.convert(Config.getString(ConfigType.SETTING_LEAVEREPLACE)));
                 } else {

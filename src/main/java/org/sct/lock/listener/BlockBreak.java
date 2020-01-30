@@ -34,8 +34,9 @@ public class BlockBreak implements Listener {
         int  BlockY = block.getLocation().getBlockY();
         int  BlockZ = block.getLocation().getBlockZ();
         Block doorAbove = new Location(e.getPlayer().getWorld(), BlockX, BlockY - 1, BlockZ).getBlock();
+        Block doorBelow = new Location(e.getPlayer().getWorld(), BlockX, BlockY + 1, BlockZ).getBlock();
 
-        if (checkDoor(e, block) || checkDoor(e, doorAbove) || checkSign(e, e.getBlock())) {
+        if (checkDoor(e, block) || checkDoor(e, doorAbove) || checkDoor(e, doorBelow) || checkSign(e, e.getBlock())) {
             e.setCancelled(true);
             e.getPlayer().sendMessage(Lang.getString(LangType.LANG_DENYBREAK));
         }

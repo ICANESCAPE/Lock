@@ -22,6 +22,8 @@ public class ListenerManager {
         register(new LockDoorAccessListener());
         register(new BlockRedstone());
         register(new BlockBreak());
+        register(new BlockPistonExtend());
+        register(new BlockPistonRetract());
     }
 
 }

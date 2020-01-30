@@ -1,9 +1,6 @@
 package org.sct.lock.util;
 
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.Sign;
@@ -49,15 +46,15 @@ public class LockUtil {
 
     /**
      * @param block 牌子
-     * @return Player 牌子拥有者
+     * @return OfflinePlayer 牌子拥有者
      */
-    public static Player getOwner(Block block) {
+    public static OfflinePlayer getOwner(Block block) {
 
         for (String  materialString : BasicUtil.convertMaterial(Config.getStringList(ConfigType.SETTING_SIGNTYPE))) {
             Material material = Material.getMaterial(materialString);
-            if (block.getType().equals(material)) {
+            if (block.getType() == material) {
                 Sign sign = (Sign) block.getState();
-                return Bukkit.getPlayer(sign.getLine(3).replace("§l",""));
+                return Bukkit.getOfflinePlayer(sign.getLine(3).replace("§l",""));
             }
         }
 

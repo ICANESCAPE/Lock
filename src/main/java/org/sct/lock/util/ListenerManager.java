@@ -21,6 +21,7 @@ public class ListenerManager {
         register(new PlayerToggleSneakListener());
         register(new LockDoorAccessListener());
         register(new BlockRedstone());
+        register(new BlockBreak());
     }
 
 }

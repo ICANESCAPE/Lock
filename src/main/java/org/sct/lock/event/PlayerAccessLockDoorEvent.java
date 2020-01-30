@@ -2,6 +2,7 @@ package org.sct.lock.event;
 
 import lombok.Getter;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -16,7 +17,7 @@ public class PlayerAccessLockDoorEvent extends Event {
     @Getter private static final HandlerList handlers = new HandlerList();
 
     @Getter Player payer;
-    @Getter Player owner;
+    @Getter OfflinePlayer owner;
     @Getter Block block;
 
     /**
@@ -26,7 +27,7 @@ public class PlayerAccessLockDoorEvent extends Event {
      * @param owner 收费门的所有者
      * @param block 收费门上面的木牌，用于判断信息
      */
-    public PlayerAccessLockDoorEvent(Player payer, Player owner, Block block) {
+    public PlayerAccessLockDoorEvent(Player payer, OfflinePlayer owner, Block block) {
         this.payer = payer;
         this.owner = owner;
         this.block = block;

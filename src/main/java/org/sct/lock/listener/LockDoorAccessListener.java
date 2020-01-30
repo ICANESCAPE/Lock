@@ -1,6 +1,7 @@
 package org.sct.lock.listener;
 
 import org.bukkit.block.Sign;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
@@ -54,12 +55,14 @@ public class LockDoorAccessListener implements Listener {
             /*payer付钱部分*/
 
             /*如果owner是vip或权限未设置*/
-            if (!"".equalsIgnoreCase(Config.getString(ConfigType.SETTING_VIPALLOWED)) || LockUtil.getOwner(e.getBlock()).hasPermission(Config.getString(ConfigType.SETTING_VIPALLOWED))) {
-                EcoUtil.take(LockUtil.getOwner(e.getBlock()), charge);
+            if (!"".equalsIgnoreCase(Config.getString(ConfigType.SETTING_VIPALLOWED)) || ((Player) LockUtil.getOwner(e.getBlock())).hasPermission(Config.getString(ConfigType.SETTING_VIPALLOWED))) {
+                EcoUtil.take(e.getPayer(), charge);
+                EcoUtil.give(LockUtil.getOwner(e.getBlock()), charge);
             } else {
                 /*owner不是vip,扣税*/
+                EcoUtil.take(e.getPayer(), charge);
                 charge = (1 - Config.getInteger(ConfigType.SETTING_TAXPERCENT)) * charge;
-                EcoUtil.take(LockUtil.getOwner(e.getBlock()), charge);
+                EcoUtil.give(LockUtil.getOwner(e.getBlock()), charge);
             }
 
             e.getPayer().sendMessage(BasicUtil.replace(Lang.getString(LangType.LANG_ENTER),"%charge", charge));

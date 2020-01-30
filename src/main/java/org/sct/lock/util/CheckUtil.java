@@ -43,7 +43,7 @@ public class CheckUtil {
         return Found;
     }
 
-    private static boolean findSign(World world, boolean Found, int X, int Y, int Z) {
+    public static boolean findSign(World world, boolean Found, int X, int Y, int Z) {
         if (Found) {
             return true;
         }

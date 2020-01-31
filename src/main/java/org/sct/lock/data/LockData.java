@@ -26,8 +26,10 @@ public class LockData {
         scheduledpool = Executors.newScheduledThreadPool(1);
     }
 
+    /*牌子坐标-玩家*/
     @Getter private static Map<Location, Player> LocationPlayer;
 
+    /*玩家-门坐标*/
     @Getter private static Map<Player, Location> PlayerLocation;
 
     /*玩家潜行的状态*/

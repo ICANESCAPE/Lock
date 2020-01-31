@@ -39,7 +39,9 @@ public class LockUtil {
             if (e.getBlockFace() == BlockFace.EAST) {
                 lt = new Location(world,X+1,Y,Z);
             }
+            /*存入牌子坐标-玩家*/
             LockData.getLocationPlayer().put(lt, e.getPlayer());
+            /*存入玩家-门坐标*/
             LockData.getPlayerLocation().put(e.getPlayer(), new Location(e.getPlayer().getWorld(),X,LowY,Z));
         }
     }

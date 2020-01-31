@@ -24,17 +24,16 @@ public class SignChangeListener implements Listener {
 
     @EventHandler
     public void onSignChange(SignChangeEvent e) {
-        Map<Player,Boolean> py_bool = new HashMap<>();
-        py_bool.put(e.getPlayer(),true);
         Location lt = e.getBlock().getLocation();
+        boolean cancel = true;
         //e.getPlayer().sendMessage("改变的牌子的位置: " + lt);
         for (String doors : Config.getStringList(ConfigType.SETTING_DOORTYPE)) {
             if (LockData.getPlayerLocation().get(e.getPlayer()).getBlock().getType() == Material.getMaterial(doors)) {
-                py_bool.put(e.getPlayer(),false);
+                cancel = false;
             }
         }
 
-        if (py_bool.get(e.getPlayer())) {
+        if (cancel) {
             return;
         }
 
@@ -64,7 +63,6 @@ public class SignChangeListener implements Listener {
             }
             LockData.getLocationPlayer().remove(lt);
             LockData.getPlayerLocation().remove(e.getPlayer());
-            py_bool.remove(e.getPlayer());
         }
     }
 }

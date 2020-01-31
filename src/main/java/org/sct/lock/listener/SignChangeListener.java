@@ -29,9 +29,15 @@ public class SignChangeListener implements Listener {
         Location lt = e.getBlock().getLocation();
         //e.getPlayer().sendMessage("改变的牌子的位置: " + lt);
         for (String doors : Config.getStringList(ConfigType.SETTING_DOORTYPE)) {
-            if (LockData.getPlayerLocation().get(e.getPlayer()).getBlock().getType() == Material.getMaterial(doors)) py_bool.put(e.getPlayer(),false);
+            if (LockData.getPlayerLocation().get(e.getPlayer()).getBlock().getType() == Material.getMaterial(doors)) {
+                py_bool.put(e.getPlayer(),false);
+            }
         }
-        if (py_bool.get(e.getPlayer())) return;
+
+        if (py_bool.get(e.getPlayer())) {
+            return;
+        }
+
         //e.getPlayer().sendMessage("门类型匹配");//门类型匹配，替换信息
         if (e.getPlayer() == LockData.getLocationPlayer().get(lt)) {
             if (e.getLine(0).equalsIgnoreCase(Config.getString(ConfigType.SETTING_LOCKSYMBOL)) && !e.getLine(1).equalsIgnoreCase("")) {

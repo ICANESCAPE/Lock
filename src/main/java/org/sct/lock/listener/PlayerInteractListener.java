@@ -52,6 +52,15 @@ public class PlayerInteractListener implements Listener {
                     return;
                 }
                 //如果右键的门符合类型
+                /*事件抑制*/
+                if (LockData.getInhibition().get(e.getPlayer()) != null) {
+                    return;
+                } else {
+                    LockData.getInhibition().put(e.getPlayer(),true);
+                    LockData.getScheduledpool().schedule(() -> {
+                        LockData.getInhibition().remove(e.getPlayer());
+                    }, Config.getInteger(ConfigType.SETTING_ENTERDELAY), TimeUnit.MILLISECONDS);
+                }
                 if (e.getClickedBlock().getType() == Material.getMaterial(door)) {
                     //如果门的上方有自动收费门的牌子,在CheckUtil内存入牌子和方块的位置
                     if (CheckUtil.CheckSign(e.getPlayer().getWorld(), e.getPlayer(), e.getClickedBlock())) {

@@ -48,7 +48,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
         if(cmds.equalsIgnoreCase(cmd.getName())) {
             if(args.length == 0) {//如果命令没有参数
                 if(!(sender instanceof Player)) {
-                    subCommandMap.get("admin").execute(sender, args);
+                    //subCommandMap.get("admin").execute(sender, args);
                     return true;
                 }
                 return true;

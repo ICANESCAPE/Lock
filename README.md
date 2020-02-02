@@ -12,11 +12,12 @@
 ## 基本信息
 * /lock help 查看帮助
 * /lock reload 重载插件
+* /lock update 插件更新
 * 剩下的全靠插件处理
 
  
 
 
 
-<br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">知识共享署名 4.0 国际许可协议</a>进行许可。
+**本作品采用 LGPL v3.0 协议进行许可**
 

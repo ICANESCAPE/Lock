@@ -14,6 +14,7 @@ org\sct\lock\listener\BlockRedstone.class
 org\sct\lock\util\CheckUtil.class
 org\sct\lock\util\ListenerManager.class
 org\sct\lock\file\Lang.class
+org\sct\lock\command\sub\Info.class
 org\sct\lock\listener\PlayerInteractListener.class
 org\sct\lock\enumeration\LangType.class
 org\sct\lock\listener\BlockPistonRetract.class

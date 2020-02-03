@@ -11,6 +11,7 @@ import org.bukkit.util.StringUtil;
 
 import org.sct.lock.Lock;
 import org.sct.lock.command.sub.Help;
+import org.sct.lock.command.sub.Info;
 import org.sct.lock.command.sub.Reload;
 import org.sct.lock.command.sub.Update;
 import org.sct.lock.enumeration.LangType;
@@ -34,6 +35,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
         subCommandMap.put("reload",new Reload());
         subCommandMap.put("help",new Help());
         subCommandMap.put("update",new Update());
+        subCommandMap.put("info",new Info());
     }
 
     public void registerSubCommand(String commandName, SubCommand command) {
@@ -48,7 +50,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
         if(cmds.equalsIgnoreCase(cmd.getName())) {
             if(args.length == 0) {//如果命令没有参数
                 if(!(sender instanceof Player)) {
-                    //subCommandMap.get("admin").execute(sender, args);
+                    subCommandMap.get("info").execute(sender, args);
                     return true;
                 }
                 return true;
@@ -72,6 +74,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
                 completions.add("reload");
                 completions.add("help");
                 completions.add("update");
+                completions.add("info");
                 return StringUtil.copyPartialMatches(args[0], completions, new ArrayList<>());
             }
             if (args.length == 2) {

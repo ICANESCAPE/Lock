@@ -49,10 +49,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if(cmds.equalsIgnoreCase(cmd.getName())) {
             if(args.length == 0) {//如果命令没有参数
-                if(!(sender instanceof Player)) {
-                    subCommandMap.get("info").execute(sender, args);
-                    return true;
-                }
+                subCommandMap.get("info").execute(sender, args);
                 return true;
             }
 

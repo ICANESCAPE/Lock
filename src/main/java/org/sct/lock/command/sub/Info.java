@@ -1,6 +1,5 @@
 package org.sct.lock.command.sub;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.sct.lock.Lock;
 import org.sct.lock.util.SubCommand;

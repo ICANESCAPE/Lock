@@ -6,7 +6,7 @@
 
     <groupId>org.sct</groupId>
     <artifactId>lock</artifactId>
-    <version>1.2.10-Alpha</version>
+    <version>1.2.11-Alpha</version>
     <packaging>jar</packaging>
 
     <name>Lock</name>

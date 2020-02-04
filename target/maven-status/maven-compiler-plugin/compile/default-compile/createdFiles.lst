@@ -6,6 +6,7 @@ org\sct\lock\file\Config.class
 org\sct\lock\listener\BlockBreak.class
 org\sct\lock\command\CommandHandler.class
 org\sct\lock\command\sub\Help.class
+org\sct\lock\util\LocationUtil.class
 org\sct\lock\command\sub\Reload.class
 org\sct\lock\util\TeleportUtil.class
 org\sct\lock\listener\SignChangeListener.class

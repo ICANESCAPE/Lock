@@ -22,7 +22,13 @@ public enum ConfigType {
     SETTING_CHARGE("Setting.Charge"),
     SETTING_ENTERDELAY("Setting.EnterDelay"),
     SETTING_BANREDSTONEACTIVE("Setting.BanRedstoneActive"),
-    SETTING_BANREDSTONEACTIVERADIUS("Setting.BanRedstoneActiveRadius");
+    SETTING_BANREDSTONEACTIVERADIUS("Setting.BanRedstoneActiveRadius"),
+    SETTING_FLAGEMPTY("Setting.FlagEmpty"),
+    SETTING_FLAGMONEY("Setting.FlagMoney"),
+    SETTING_FLAGEFFECT("Setting.FlagEffect"),
+    SETTING_EMPTYREPLACE("Setting.EmptyReplace"),
+    SETTING_MONEYREPLACE("Setting.MoneyReplace"),
+    SETTING_EFFECTREPLACE("Setting.EffectReplace");
 
 
     @Getter String path;

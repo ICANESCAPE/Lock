@@ -40,12 +40,11 @@ public class SignChangeListener implements Listener {
                 if (!LocationUtil.checkWorld(e.getBlock().getLocation())) {
                     return;
                 }
-
                 /*替换第一行Symbol*/
                 e.setLine(0, BasicUtil.convert(Config.getString(ConfigType.SETTING_SYMBOLREPLACE)));
 
                 /*替换第四行为玩家名*/
-                e.setLine(3,"§l" + e.getPlayer().getName());
+                e.setLine(3,"§l" + e.getPlayer().getName() + "\n测试第四行");
                 if (Integer.getInteger(e.getLine(1)) != null) {
                     int money = Integer.getInteger(e.getLine(2));
                 }
@@ -53,16 +52,38 @@ public class SignChangeListener implements Listener {
                 /*替换第二行价格*/
                 e.setLine(1,BasicUtil.convert(Config.getString(ConfigType.SETTING_CHARGE) + e.getLine(1)));
 
-                if (e.getLine(2).equalsIgnoreCase(Config.getString(ConfigType.SETTING_FLAGENTER))) {
-                    /*替换第三行进*/
-                    e.setLine(2,BasicUtil.convert(Config.getString(ConfigType.SETTING_ENTERREPLACE)));
-                } else if (e.getLine(2).equalsIgnoreCase(Config.getString(ConfigType.SETTING_FLAGLEAVE))) {
-                    /*替换第三行出*/
-                    e.setLine(2,BasicUtil.convert(Config.getString(ConfigType.SETTING_LEAVEREPLACE)));
-                } else {
-                    /*替换第三行进出*/
-                    e.setLine(2,BasicUtil.convert(Config.getString(ConfigType.SETTING_ENTERREPLACE) + Config.getString(ConfigType.SETTING_LEAVEREPLACE)));
+                StringBuffer buffer = new StringBuffer();
+                String line = e.getLine(2);
+                boolean direction = false;
+                if (line.contains(Config.getString(ConfigType.SETTING_FLAGENTER))) {
+                    buffer.append(BasicUtil.convert(Config.getString(ConfigType.SETTING_ENTERREPLACE)));
+                    direction = true;
                 }
+
+                if (line.contains(Config.getString(ConfigType.SETTING_FLAGLEAVE))) {
+                    buffer.append(BasicUtil.convert(Config.getString(ConfigType.SETTING_LEAVEREPLACE)));
+                    direction = true;
+                }
+
+                /*开启默认双向*/
+                if (!direction) {
+                    buffer.append(BasicUtil.convert(Config.getString(ConfigType.SETTING_ENTERREPLACE) + Config.getString(ConfigType.SETTING_LEAVEREPLACE)));
+                }
+
+                /*-----------------------------------------------------*/
+                if (line.contains(Config.getString(ConfigType.SETTING_FLAGEMPTY))) {
+                   buffer.append(BasicUtil.convert(Config.getString(ConfigType.SETTING_EMPTYREPLACE)));
+                }
+
+                if (line.contains(Config.getString(ConfigType.SETTING_FLAGMONEY))) {
+                    buffer.append(BasicUtil.convert(Config.getString(ConfigType.SETTING_MONEYREPLACE)));
+                }
+
+                if (line.contains(Config.getString(ConfigType.SETTING_FLAGEFFECT))) {
+                    buffer.append(BasicUtil.convert(Config.getString(ConfigType.SETTING_EFFECTREPLACE)));
+                }
+
+                e.setLine(2, buffer.toString());
             }
             LockData.getLocationPlayer().remove(lt);
             LockData.getPlayerLocation().remove(e.getPlayer());

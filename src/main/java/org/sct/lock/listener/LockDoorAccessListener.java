@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+import org.bukkit.inventory.ItemStack;
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.enumeration.LangType;
 import org.sct.lock.event.PlayerAccessLockDoorEvent;
@@ -41,6 +42,27 @@ public class LockDoorAccessListener implements Listener {
             if (!status.equals(direction)) {
                 e.getPayer().sendMessage(BasicUtil.convert(Lang.getString(LangType.LANG_DENYDIRECTION)));
                 return;
+            }
+        }
+
+        String restriction = LockUtil.getRestriction(e.getBlock());
+
+        System.out.println(restriction);
+        if (!restriction.isEmpty()) {
+            if (restriction.contains("1")) {
+
+
+            }
+
+            if (restriction.contains("2")) {
+
+            }
+
+            if (restriction.contains("3")) {
+                if (!e.getPayer().getActivePotionEffects().isEmpty()) {
+                    System.out.println("含有药水效果");
+                    return;
+                }
             }
         }
 

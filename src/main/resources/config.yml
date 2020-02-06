@@ -37,8 +37,18 @@ Setting:
   FlagEnter: "进"
   #收费门第三行离开标识(大小写不敏感)
   FlagLeave: "出"
-  #收费门被安装后显示的第三行进出信息
+  #收费门第三行背包为空标识(大小写不敏感)
+  FlagEmpty: "空"
+  #收费门第三行钱数标识(大小写不敏感)
+  FlagMoney: "钱"
+  #收费门第三行药水效果标识(大小写不敏感)
+  FlagEffect: "效"
+  #收费门被安装后显示的第三行替换信息
   EnterReplace: "&a[进]"
   LeaveReplace: "&c[出]"
+  EmptyReplace: "&b[空]"
+  MoneyReplace: "&b[钱]"
+  EffectReplace: "&b[效]"
+
 
 

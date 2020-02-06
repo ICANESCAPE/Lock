@@ -72,15 +72,32 @@ public class LockUtil {
         String orign = sign.getLine(2);
         String enter = BasicUtil.convert(Config.getString(ConfigType.SETTING_ENTERREPLACE));
         String leave = BasicUtil.convert(Config.getString(ConfigType.SETTING_LEAVEREPLACE));
-        if (orign.equals(enter)) {
-            return "enter";
-        } else if (orign.equals(leave)) {
-            return "leave";
-        } else if (orign.contains(enter) && orign.contains(leave)) {
+        if (orign.contains(enter) && orign.contains(leave)) {
             return "double";
-        } else {
+        } else if (orign.contains(enter)) {
+            return "enter";
+        } else if (orign.contains(leave)) {
+            return "leave";
+        } else  {
             return null;
         }
+    }
+
+    public static String getRestriction(Block block) {
+        Sign sign = (Sign) block.getState();
+        String orign = sign.getLine(2);
+        String empty = BasicUtil.convert(Config.getString(ConfigType.SETTING_EMPTYREPLACE));
+        String money = BasicUtil.convert(Config.getString(ConfigType.SETTING_MONEYREPLACE));
+        String effect = BasicUtil.convert(Config.getString(ConfigType.SETTING_EFFECTREPLACE));
+        StringBuffer restriction = new StringBuffer();
+        if (orign.contains(empty)) {
+            restriction.append("1");
+        } else if (orign.contains(money)) {
+            restriction.append("2");
+        } else if (orign.contains(effect)) {
+            restriction.append("3");
+        }
+        return restriction.toString();
     }
 
 }

@@ -4,7 +4,7 @@ import org.bukkit.command.CommandSender;
 
 import org.sct.lock.enumeration.LangType;
 import org.sct.lock.file.Lang;
-import org.sct.lock.util.SubCommand;
+import org.sct.lock.util.function.SubCommand;
 
 import java.util.List;
 

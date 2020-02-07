@@ -1,6 +1,7 @@
-package org.sct.lock.util;
+package org.sct.lock.util.plugin;
 
 import org.sct.lock.Lock;
+import org.sct.lock.util.plugin.GetVersionlMessage;
 
 import java.io.BufferedReader;
 import java.io.IOException;

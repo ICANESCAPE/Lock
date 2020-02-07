@@ -6,7 +6,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
-import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
 import org.sct.lock.Lock;
@@ -16,7 +15,7 @@ import org.sct.lock.command.sub.Reload;
 import org.sct.lock.command.sub.Update;
 import org.sct.lock.enumeration.LangType;
 import org.sct.lock.file.Lang;
-import org.sct.lock.util.SubCommand;
+import org.sct.lock.util.function.SubCommand;
 
 import java.util.ArrayList;
 import java.util.List;

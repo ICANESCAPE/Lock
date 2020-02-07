@@ -5,10 +5,10 @@ import org.sct.lock.Lock;
 import org.sct.lock.data.LockData;
 import org.sct.lock.enumeration.LangType;
 import org.sct.lock.file.Lang;
-import org.sct.lock.util.DownloadUtil;
-import org.sct.lock.util.GetVersionlMessage;
-import org.sct.lock.util.SubCommand;
-import org.sct.lock.util.UpdateUtil;
+import org.sct.lock.util.plugin.DownloadUtil;
+import org.sct.lock.util.plugin.GetVersionlMessage;
+import org.sct.lock.util.function.SubCommand;
+import org.sct.lock.util.plugin.UpdateUtil;
 
 import java.io.IOException;
 

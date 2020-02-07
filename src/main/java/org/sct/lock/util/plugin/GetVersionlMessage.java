@@ -1,6 +1,7 @@
-package org.sct.lock.util;
+package org.sct.lock.util.plugin;
 
 import org.bukkit.command.CommandSender;
+import org.sct.lock.util.BasicUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;

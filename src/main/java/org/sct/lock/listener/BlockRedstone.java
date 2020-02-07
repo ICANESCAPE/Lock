@@ -5,7 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockRedstoneEvent;
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.file.Config;
-import org.sct.lock.util.CheckUtil;
+import org.sct.lock.util.player.CheckUtil;
 
 public class BlockRedstone implements Listener {
     @EventHandler

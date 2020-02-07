@@ -2,7 +2,7 @@ package org.sct.lock.command.sub;
 
 import org.bukkit.command.CommandSender;
 import org.sct.lock.Lock;
-import org.sct.lock.util.SubCommand;
+import org.sct.lock.util.function.SubCommand;
 
 public class Info implements SubCommand {
     @Override

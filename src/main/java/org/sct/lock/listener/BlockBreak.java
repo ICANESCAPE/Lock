@@ -4,7 +4,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -14,8 +13,8 @@ import org.sct.lock.enumeration.LangType;
 import org.sct.lock.file.Config;
 import org.sct.lock.file.Lang;
 import org.sct.lock.util.BasicUtil;
-import org.sct.lock.util.CheckUtil;
-import org.sct.lock.util.LockUtil;
+import org.sct.lock.util.player.CheckUtil;
+import org.sct.lock.util.function.LockUtil;
 
 import java.util.List;
 

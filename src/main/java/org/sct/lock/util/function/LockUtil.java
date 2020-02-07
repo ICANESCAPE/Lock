@@ -1,4 +1,4 @@
-package org.sct.lock.util;
+package org.sct.lock.util.function;
 
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -10,6 +10,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.sct.lock.data.LockData;
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.file.Config;
+import org.sct.lock.util.BasicUtil;
 
 /**
  * @author icestar

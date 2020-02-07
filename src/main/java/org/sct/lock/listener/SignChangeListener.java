@@ -10,7 +10,7 @@ import org.sct.lock.data.LockData;
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.file.Config;
 import org.sct.lock.util.BasicUtil;
-import org.sct.lock.util.LocationUtil;
+import org.sct.lock.util.function.LocationUtil;
 
 
 /**

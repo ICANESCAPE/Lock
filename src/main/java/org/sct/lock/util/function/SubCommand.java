@@ -1,4 +1,4 @@
-package org.sct.lock.util;
+package org.sct.lock.util.function;
 
 import org.bukkit.command.CommandSender;
 

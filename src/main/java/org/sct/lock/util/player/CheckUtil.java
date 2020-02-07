@@ -1,4 +1,4 @@
-package org.sct.lock.util;
+package org.sct.lock.util.player;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.sct.lock.data.LockData;
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.file.Config;
+import org.sct.lock.util.BasicUtil;
 
 public class CheckUtil {
 

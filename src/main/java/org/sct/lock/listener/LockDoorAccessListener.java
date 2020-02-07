@@ -5,16 +5,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import org.bukkit.inventory.ItemStack;
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.enumeration.LangType;
 import org.sct.lock.event.PlayerAccessLockDoorEvent;
 import org.sct.lock.file.Config;
 import org.sct.lock.file.Lang;
 import org.sct.lock.util.BasicUtil;
-import org.sct.lock.util.EcoUtil;
-import org.sct.lock.util.LockUtil;
-import org.sct.lock.util.TeleportUtil;
+import org.sct.lock.util.player.EcoUtil;
+import org.sct.lock.util.function.LockUtil;
+import org.sct.lock.util.player.TeleportUtil;
 
 /**
  * @author alchemy

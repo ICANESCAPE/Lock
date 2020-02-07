@@ -1,4 +1,4 @@
-package org.sct.lock.util;
+package org.sct.lock.util.player;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;

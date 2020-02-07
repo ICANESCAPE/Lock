@@ -12,7 +12,8 @@ import org.sct.lock.data.LockData;
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.event.PlayerAccessLockDoorEvent;
 import org.sct.lock.file.Config;
-import org.sct.lock.util.*;
+import org.sct.lock.util.function.LockUtil;
+import org.sct.lock.util.player.CheckUtil;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

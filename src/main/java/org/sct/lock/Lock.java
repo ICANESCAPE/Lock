@@ -8,9 +8,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.sct.lock.data.LockData;
 import org.sct.lock.command.CommandHandler;
 import org.sct.lock.file.Lang;
-import org.sct.lock.util.EcoUtil;
+import org.sct.lock.util.player.EcoUtil;
 import org.sct.lock.util.ListenerManager;
-import org.sct.lock.util.UpdateUtil;
+import org.sct.lock.util.plugin.UpdateUtil;
 
 
 /**

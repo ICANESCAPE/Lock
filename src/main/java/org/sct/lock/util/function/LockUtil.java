@@ -1,5 +1,6 @@
 package org.sct.lock.util.function;
 
+import com.google.common.collect.Maps;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -11,6 +12,9 @@ import org.sct.lock.data.LockData;
 import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.file.Config;
 import org.sct.lock.util.BasicUtil;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author icestar
@@ -88,17 +92,54 @@ public class LockUtil {
         Sign sign = (Sign) block.getState();
         String orign = sign.getLine(2);
         String empty = BasicUtil.convert(Config.getString(ConfigType.SETTING_EMPTYREPLACE));
-        String money = BasicUtil.convert(Config.getString(ConfigType.SETTING_MONEYREPLACE));
+        String money = BasicUtil.convert(Config.getString(ConfigType.SETTING_FLAGMONEY));
         String effect = BasicUtil.convert(Config.getString(ConfigType.SETTING_EFFECTREPLACE));
         StringBuffer restriction = new StringBuffer();
         if (orign.contains(empty)) {
             restriction.append("1");
-        } else if (orign.contains(money)) {
+        }
+
+        if (orign.contains(money)) {
             restriction.append("2");
-        } else if (orign.contains(effect)) {
+        }
+        if (orign.contains(effect)) {
             restriction.append("3");
         }
         return restriction.toString();
+    }
+
+    public static Map getMoneydetail(String line, int currentMoney, int money) {
+        boolean access = false;
+        String symbol = "";
+        Map<String, Boolean> moneyDetail = Maps.newHashMap();
+        if (line.contains(">=")) {
+            symbol = ">=";
+            if (currentMoney >= money) {
+                access = true;
+            }
+        } else if (line.contains("<=")) {
+            symbol = "<=";
+            if (currentMoney <= money) {
+                access = true;
+            }
+        } else if (line.contains("=")) {
+            symbol = "=";
+            if (currentMoney == money) {
+                access = true;
+            }
+        } else if (line.contains(">")) {
+            symbol = ">";
+            if (currentMoney > money) {
+                access = true;
+            }
+        } else if (line.contains("<")) {
+            symbol = "<";
+            if (currentMoney < money) {
+                access = true;
+            }
+        }
+        moneyDetail.put(symbol, access);
+        return moneyDetail;
     }
 
 }

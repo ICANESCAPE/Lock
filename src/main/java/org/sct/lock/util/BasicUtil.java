@@ -19,6 +19,18 @@ public class BasicUtil {
         return msgList;
     }
 
+    public static String remove(String message) {
+        return ChatColor.stripColor(message);
+    }
+
+    public static List<String> remove(List<String> message) {
+        List<String> msgList = new ArrayList<>();
+        for (String key : message) {
+            msgList.add(remove(key));
+        }
+        return msgList;
+    }
+
     public static List<String> convertMaterial(List<String> name) {
         List<String> materialList = new ArrayList<>();
         for (String materialName : name) {
@@ -40,7 +52,7 @@ public class BasicUtil {
                 }
             }
         }
-        return Integer.parseInt(collect);
+        return collect.isEmpty() ? 0 : Integer.parseInt(collect);
     }
 
     public static <T> String replace(String message, String var, T replace) {

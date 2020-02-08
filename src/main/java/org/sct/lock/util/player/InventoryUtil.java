@@ -7,14 +7,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
+import java.util.Arrays;
+
 /**
  * @author alchemy
  * @date 2020-02-07 12:31
  */
 public class InventoryUtil {
-
-    /* 是否需要护甲为空你自己判断 */
-    private static boolean isAmorEmpty = false;
 
     /**
      * 判断指定玩家背包是否为空
@@ -25,11 +24,9 @@ public class InventoryUtil {
     public static boolean isInvEmpty(Player player) {
         PlayerInventory inventory = player.getInventory();
         ItemStack[] checkList = inventory.getContents();
-        if (isAmorEmpty) {
-            checkList = (ItemStack[]) ArrayUtils.addAll(checkList, player.getInventory().getArmorContents());
-        }
+
         for (ItemStack item : checkList) {
-            if (item != null || item.hasItemMeta() || item.getItemMeta().equals(Material.AIR)) {
+            if (item != null) {
                 return false;
             }
         }

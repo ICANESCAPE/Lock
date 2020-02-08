@@ -13,7 +13,10 @@ import org.sct.lock.file.Lang;
 import org.sct.lock.util.BasicUtil;
 import org.sct.lock.util.player.EcoUtil;
 import org.sct.lock.util.function.LockUtil;
+import org.sct.lock.util.player.InventoryUtil;
 import org.sct.lock.util.player.TeleportUtil;
+
+import java.util.Map;
 
 /**
  * @author alchemy
@@ -46,20 +49,30 @@ public class LockDoorAccessListener implements Listener {
 
         String restriction = LockUtil.getRestriction(e.getBlock());
 
-        System.out.println(restriction);
         if (!restriction.isEmpty()) {
             if (restriction.contains("1")) {
-
-
+                if (!InventoryUtil.isInvEmpty(e.getPayer())) {
+                    e.getPayer().sendMessage(BasicUtil.convert(Lang.getString(LangType.LANG_DENYNOTEMPTYINV)));
+                    return;
+                }
             }
 
             if (restriction.contains("2")) {
-
+                String line = BasicUtil.remove(((Sign) e.getBlock().getState()).getLine(2));
+                int money = BasicUtil.ExtraceInt(line);
+                int currentMoney = (int) EcoUtil.get(e.getPayer());
+                Map<String, Boolean> moneyDetail = LockUtil.getMoneydetail(line, currentMoney, money);
+                String symbol = moneyDetail.keySet().iterator().next();
+                boolean access = moneyDetail.get(symbol);
+                if (!access && !symbol.isEmpty()) {
+                    e.getPayer().sendMessage(BasicUtil.replace(Lang.getString(LangType.LANG_DENYMONEY), "%needmoney", symbol + money));
+                    return;
+                }
             }
 
             if (restriction.contains("3")) {
                 if (!e.getPayer().getActivePotionEffects().isEmpty()) {
-                    System.out.println("含有药水效果");
+                    e.getPayer().sendMessage(BasicUtil.convert(Lang.getString(LangType.LANG_DENYHAVEEFFECT)));
                     return;
                 }
             }

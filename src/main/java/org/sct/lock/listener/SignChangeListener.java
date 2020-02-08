@@ -11,6 +11,9 @@ import org.sct.lock.enumeration.ConfigType;
 import org.sct.lock.file.Config;
 import org.sct.lock.util.BasicUtil;
 import org.sct.lock.util.function.LocationUtil;
+import org.sct.lock.util.function.LockUtil;
+
+import java.util.Map;
 
 
 /**
@@ -76,7 +79,10 @@ public class SignChangeListener implements Listener {
                 }
 
                 if (line.contains(Config.getString(ConfigType.SETTING_FLAGMONEY))) {
-                    buffer.append(BasicUtil.convert(Config.getString(ConfigType.SETTING_MONEYREPLACE)));
+                    int money = BasicUtil.ExtraceInt(line);
+                    Map<String, Boolean> moneyDetail = LockUtil.getMoneydetail(line, 0, 0);
+                    String symbol = moneyDetail.keySet().iterator().next();
+                    buffer.append(BasicUtil.convert(BasicUtil.replace(Config.getString(ConfigType.SETTING_MONEYREPLACE), "%needmoney", symbol + money)));
                 }
 
                 if (line.contains(Config.getString(ConfigType.SETTING_FLAGEFFECT))) {

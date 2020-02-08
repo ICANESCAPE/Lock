@@ -33,7 +33,7 @@ public class BasicUtil {
         if (s != null && !"".equals(s)) {
             for (int i = 0; i < s.length(); i++) {
                 if (s.charAt(i) >= 48 && s.charAt(i) <= 57) {
-                    if (s.charAt(i-1) == 38) {
+                    if (s.charAt(i) == 38) {
                         continue;
                     }
                     collect += s.charAt(i);

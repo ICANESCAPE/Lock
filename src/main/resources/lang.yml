@@ -23,5 +23,11 @@ Language:
   NotEnoughMoney: "&7[&eLock&7]&c抱歉，你拥有的钱不足以支付通过收费门"
   #禁止的出入方向
   DenyDirection: "&7[&eLock&7]&c此方向禁止出入"
+  #禁止背包不为空的玩家进入
+  DenyNotEmptyInv: "&7[&eLock&7]&c背包不为空禁止进入"
+  #禁止钱数不满足的玩家进入
+  DenyMoney: "&7[&eLock&7]&c你的余额不满足%needmoney"
+  #禁止有药水效果的玩家进入
+  DenyHaveEffect: "&7[&eLock&7]&c含有药水效果禁止进入"
   #禁止破坏的提示
   DenyBreak: "&7[&eLock&7]&c禁止破坏自动收费门"

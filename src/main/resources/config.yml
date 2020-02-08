@@ -47,8 +47,8 @@ Setting:
   EnterReplace: "&a[进]"
   LeaveReplace: "&c[出]"
   EmptyReplace: "&b[空]"
-  MoneyReplace: "&b[钱]"
-  EffectReplace: "&b[效]"
+  MoneyReplace: "&6[钱%needmoney]"
+  EffectReplace: "&2[效]"
 
 
 
